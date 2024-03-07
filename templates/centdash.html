@@ -2,13 +2,19 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>CentDash: Make better financial decisions.</title>
+        <title>CentDash | Make better financial decisions</title>
         <link rel="stylesheet" href="{{url_for('static', filename='layout.css')}}">
     </head>
     <body>
         <section>
-            <header>
-                <h1><a href="#"><img src="{{url_for('static', filename='CentDash.png')}}"  class="logo" width="250" height="95"></a></h1>
+            <header class="centdash">
+                <a href="#"><img src="{{url_for('static', filename='CentDash.png')}}"  class="logo" width="200" height="65"></a>
+                <nav class="links">
+                    <a href="#">How it Works</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Sign In</a>
+                    <a href="#">Sign Up</a>
+                </nav>
                 <div class="navigation">
                 </div>
             </header>
