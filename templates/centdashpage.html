@@ -3,7 +3,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>CentDash</title>
-        <link rel="stylesheet" type="css" href="layout.css">
-        
+        <link rel="stylesheet" href="{{url_for('static', filename='layout.css')}}">
     </head>
+    <body>
+        <div class="navbar">
+        <a href="#"><img src="{{url_for('static', filename='CentDash (White).png')}}"  class="whitelogo" width="200" height="65"></a>  
+        </div>
+        <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+    </body>
 </html>

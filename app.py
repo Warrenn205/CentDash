@@ -7,5 +7,13 @@ app = Flask(__name__)
 def main():
     return render_template("centdash.html")
 
+@app.route('/login')
+def login():
+    return render_template("signin.html")
+
+@app.route('/page')
+def page():
+    return render_template("centdashpage.html")
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)
