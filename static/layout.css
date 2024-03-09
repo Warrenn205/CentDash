@@ -26,18 +26,3 @@
     background: rgba(0, 0, 0, 0.868);
     transition: 0.5s;
 }
-
-.shape {
-    position: relative;
-}
-
-.oval {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px; /* Adjust the size of the shape as needed */
-    height: 100px;
-    background-color: #3498db; /* Adjust the color of the shape as needed */
-    border-radius: 50%; /* Creates a circle */
-    z-index: -1; 
-}

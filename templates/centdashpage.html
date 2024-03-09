@@ -3,11 +3,21 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>CentDash</title>
-        <link rel="stylesheet" href="{{url_for('static', filename='layout.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='centdash.css')}}">
     </head>
     <body>
         <div class="navbar">
+        <div class="logosection">
         <a href="#"><img src="{{url_for('static', filename='CentDash (White).png')}}"  class="whitelogo" width="200" height="65"></a>  
+        <br>
+        </div>
+        <div class="centdash-links">
+        <a href="#" class="centdash-link">Dashboard</a>
+        <a href="#" class="centdash-link">Budgets</a>
+        <a href="#" class="centdash-link">Net Worth</a>
+        <a href="#" class="centdash-link">Goals</a>
+        <a href="#" class="centdash-link">Statements</a>
+        <a href="#" class="centdash-link">CentDash Hub</a>
         </div>
         <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
     </body>
