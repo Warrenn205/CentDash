@@ -1,3 +1,38 @@
+.profile-pic {
+    position: relative;
+    margin-right: 20px; 
+}
+
+.profilepic {
+    width: 39px; 
+    height: 39px;
+    cursor: pointer;
+}
+
+.profile-pic {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+}
+
+.notifications {
+    position: relative;
+    margin-right: 40px; 
+}
+
+.notification {
+    width: 35px; 
+    height: 35px;
+    cursor: pointer;
+}
+
+.notifications {
+    position: absolute;
+    top: 12px;
+    right: 45px; 
+}
+
+
 .navbar {
     display: flex;
     position: absolute;
