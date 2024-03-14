@@ -115,3 +115,8 @@ a.centdash-link:hover {
 a.bottom-link:hover {
     color: rgba(22, 89, 177, 0.938);
 }
+
+h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}

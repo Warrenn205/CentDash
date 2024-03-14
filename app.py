@@ -15,6 +15,31 @@ def login():
 def page():
     return render_template("centdashpage.html")
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template("centdashpage.html")
+
+@app.route('/budgets')
+def budgets():
+    return render_template("budgets.html")
+
+@app.route('/networth')
+def networth():
+    return render_template("networth.html")
+
+@app.route('/goals')
+def goals():
+    return render_template("goals.html")
+
+@app.route('/statements')
+def statements():
+    return render_template("statements.html")
+
+@app.route('/hub')
+def centdashhub():
+    return render_template("centdashhub.html")
+
+
 @app.route('/logout')
 def logout():
     return render_template("centdash.html")
