@@ -15,5 +15,9 @@ def login():
 def page():
     return render_template("centdashpage.html")
 
+@app.route('/logout')
+def logout():
+    return render_template("centdash.html")
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)
