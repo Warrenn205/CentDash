@@ -1,6 +1,18 @@
 {%extends "centdashpage.html" %} 
 {%block content%} 
-        <h1>Budgets</h1>
+    <h1>Budgets</h1>
+        <form id="budgets">
+            <h2>Income</h2>
+            <div id="incomeFields">
+                <div class="income">
+                    <input type="amount" name="incomeField[]" placeholder="Enter amount of income">  
+            </div>
+            <button type="button" onclick="addIncome(1)">Add</button>
+            <button type="submit">Submit</button>
+            </div>
+        </div>
+        </form>
+        <div id="displayIncome"></div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>
