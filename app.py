@@ -27,9 +27,9 @@ def budgets():
 def networth():
     return render_template("networth.html")
 
-@app.route('/goals')
-def goals():
-    return render_template("goals.html")
+@app.route('/savings')
+def savings():
+    return render_template("savings.html")
 
 @app.route('/statements')
 def statements():
