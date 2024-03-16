@@ -44,14 +44,14 @@ $(function() {
       $('.income-field input[type="number"]').each(function() {
           var incomeValue = parseFloat($(this).val());
           if (!isNaN(incomeValue)) {
-              totalIncome += incomeValue;
+              totalIncome = totalIncome + incomeValue;
           }
       });
 
       $('.expense-category input[type="number"]').each(function() {
           var expenseValue = parseFloat($(this).val());
           if (!isNaN(expenseValue)) {
-              totalExpenses += expenseValue;
+              totalExpenses = totalExpenses + expenseValue;
           }
       });
 
@@ -111,14 +111,14 @@ $(function() {
       $('.asset-field input[type="number"]').each(function() {
           var assetValue = parseFloat($(this).val());
           if (!isNaN(assetValue)) {
-              totalAssets += assetValue;
+              totalAssets = totalAssets + assetValue;
           }
       });
 
       $('.liability-field input[type="number"]').each(function() {
           var liabilityValue = parseFloat($(this).val());
           if (!isNaN(liabilityValue)) {
-              totalLiabilities += liabilityValue;
+              totalLiabilities = totalLiabilities + liabilityValue;
           }
       });
 
