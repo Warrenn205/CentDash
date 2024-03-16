@@ -49,3 +49,4 @@ function calculateBudget() {
     document.getElementById('total').innerHTML = "Net Monthly Total: $" + netTotal.toFixed(2);
 
 }
+
