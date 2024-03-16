@@ -128,3 +128,54 @@ h2 {
 .expenses {
     display: inline-block;
 }
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  #budget-form {
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    width: 120%;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="number"] {
+    width: 120%;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: rgba(32, 162, 214, 0.96);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  
+  button:hover {
+    background-color: rgba(27, 85, 220, 0.942);
+  }
+  
+  #result {
+    font-size: 18px;
+    font-weight: bold;
+  }

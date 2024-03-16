@@ -1,21 +1,51 @@
-function addIncome(amount) {
-    var incomeStream = document.getElementById('incomeFields');
-    var displayIncome = document.getElementById('displayIncome');
+function addIncome() {
+    var incomeStream = document.getElementById('income-streams');
+    var newIncomeStream = document.createElement('div');
 
-    for (var i = 0; i < amount; i++) {
-        var newIncomeStream = document.createElement('div');
-        newIncomeStream.classList.add('income');
+    newIncomeStream.innerHTML = `
+        <div class="income-stream">
+            <input type="text" placeholder="Enter Stream of Income">
+            <input type="number" placeholder="Amount">
+        <div>`;
+    incomeStream.appendChild(newIncomeStream);
+}
 
-        var newIncomeStream = document.createElement('input');
-        newIncomeStream.type = 'amount';
-        newIncomeStream.name = 'incomeField[]';
-        newIncomeStream.placeholder = 'Enter amount of income';
+function addExpense() {
+    var expenseCategory = document.getElementById('expense-fields');
+    var newExpenseCategory = document.createElement('div');
+    newExpenseCategory.innerHTML = `
+        <div class="expense-category">
+            <input type="text" placeholder="Enter expense">
+            <input type="number" placeholder="Amount">
+        </div>`
+        expenseCategory.appendChild(newExpenseCategory);
+}
 
-        newIncomeStream.appendChild(newIncomeStream);
-        incomeStreamContainer.appendChild(incomeStream);
+function calculateBudget() {
+    var income = document.querySelectorAll('#income-streams input[type="number"]');
+    var expense = document.querySelectorAll('#expense-fields input[type="number"]');
+    
+    var totalIncome = 0;
+    var totalExpenses = 0;
+    
+    income.forEach(function(incomes) {
+      if (income.value !== '') {
+        totalIncome = totalIncome + parseFloat(incomes.value);
+      }
+    });
+    
+    expense.forEach(function(expenses) {
+      if (expense.value !== '') {
+        totalExpenses = totalExpenses + parseFloat(expenses.value);
+      }
+    });
 
-        var displayAmount = document.createElement('p');
-        displayAmount.textContent = "Input: " + (i + 1) + ", Value: " + newIncomeStream.value;
-        displayIncome.appendChild(displayAmount);
-    }
+    var netIncome = totalIncome;
+    var netExpenses = totalExpenses;
+    var netTotal = totalIncome - totalExpenses;
+
+    document.getElementById('income').innerHTML = "Net Income: $" + netIncome.toFixed(2);
+    document.getElementById('expenses').innerHTML = "Net Expenses: $" + netExpenses.toFixed(2)
+    document.getElementById('total').innerHTML = "Net Monthly Total: $" + netTotal.toFixed(2);
+
 }
