@@ -81,7 +81,7 @@ $(function() {
 
   function addLiabilities() {
       var liabilityCategory = $('.liability-field').length + 1;
-      var newLiabilityCategory = $('<div class="expense-category"><input type="text" placeholder="Enter liability ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
+      var newLiabilityCategory = $('<div class="expense-category"><input type="text" placeholder="Enter liability ' + liabilityCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
       $('#liability-field').append(newLiabilityCategory);
   }
 
