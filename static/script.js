@@ -50,3 +50,50 @@ function calculateBudget() {
 
 }
 
+function addAssets() {
+  var assetValue = document.getElementById('assets');
+  var newAssetValue = document.createElement('div');
+
+  newAssetValue.innerHTML = `
+      <div class="asset-field">
+          <input type="text" placeholder="Enter Asset">
+          <input type="number" placeholder="Amount">
+      </div>`;
+  assetValue.appendChild(newAssetValue);
+}
+
+function addLiabilities() {
+  var liabilitieValue = document.getElementById('liabilities');
+  var newLiabilitieValue = document.createElement('div');
+  newLiabilitieValue.innerHTML = `
+      <div class="liability-field">
+          <input type="text" placeholder="Enter Liability">
+          <input type="number" placeholder="Amount">
+      </div>'`;
+
+  liabilitieValue.appendChild(newLiabilitieValue);
+}
+
+function calculateNetWorth() {
+  var assetInputs = document.querySelectorAll('#assets input[type="number"]');
+  var liabilityInputs = document.querySelectorAll('#liabilities input[type="number"]');
+  
+  var totalAssets = 0;
+  var totalLiabilities = 0;
+  
+  assetInputs.forEach(function(asset) {
+    if (asset.value !== '') {
+      totalAssets = totalAssets + parseFloat(asset.value);
+    }
+  });
+  
+  liabilityInputs.forEach(function(liability) {
+    if (liability.value !== '') {
+      totalLiabilities = totalLiabilities + parseFloat(liability.value);
+    }
+  });
+
+  var netWorth = totalAssets - totalLiabilities;
+
+  document.getElementById('networth').innerHTML = "Net Worth: $" + netWorth.toFixed(2);
+}
