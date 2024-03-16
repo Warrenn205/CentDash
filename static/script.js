@@ -1,99 +1,129 @@
-function addIncome() {
-    var incomeStream = document.getElementById('income-streams');
-    var newIncomeStream = document.createElement('div');
+// Budgets
 
-    newIncomeStream.innerHTML = `
-        <div class="income-stream">
-            <input type="text" placeholder="Enter Stream of Income">
-            <input type="number" placeholder="Amount">
-        <div>`;
-    incomeStream.appendChild(newIncomeStream);
-}
+$(function() {
+  function addIncome() {
+      var incomeStream = $('.income-field').length + 1;
+      var newIncomeStream = $('<div class="income-field"><input type="text" placeholder="Enter Stream of Income ' + incomeStream + '"><input type="number" placeholder="Amount"><button class="delete-income">Delete</button></div>');
+      $('#income-streams').append(newIncomeStream);
+  }
 
-function addExpense() {
-    var expenseCategory = document.getElementById('expense-fields');
-    var newExpenseCategory = document.createElement('div');
-    newExpenseCategory.innerHTML = `
-        <div class="expense-category">
-            <input type="text" placeholder="Enter expense">
-            <input type="number" placeholder="Amount">
-        </div>`
-        expenseCategory.appendChild(newExpenseCategory);
-}
-
-function calculateBudget() {
-    var income = document.querySelectorAll('#income-streams input[type="number"]');
-    var expense = document.querySelectorAll('#expense-fields input[type="number"]');
-    
-    var totalIncome = 0;
-    var totalExpenses = 0;
-    
-    income.forEach(function(incomes) {
-      if (income.value !== '') {
-        totalIncome = totalIncome + parseFloat(incomes.value);
-      }
-    });
-    
-    expense.forEach(function(expenses) {
-      if (expense.value !== '') {
-        totalExpenses = totalExpenses + parseFloat(expenses.value);
-      }
-    });
-
-    var netIncome = totalIncome;
-    var netExpenses = totalExpenses;
-    var netTotal = totalIncome - totalExpenses;
-
-    document.getElementById('income').innerHTML = "Net Income: $" + netIncome.toFixed(2);
-    document.getElementById('expenses').innerHTML = "Net Expenses: $" + netExpenses.toFixed(2)
-    document.getElementById('total').innerHTML = "Net Monthly Total: $" + netTotal.toFixed(2);
-
-}
-
-function addAssets() {
-  var assetValue = document.getElementById('assets');
-  var newAssetValue = document.createElement('div');
-
-  newAssetValue.innerHTML = `
-      <div class="asset-field">
-          <input type="text" placeholder="Enter Asset">
-          <input type="number" placeholder="Amount">
-      </div>`;
-  assetValue.appendChild(newAssetValue);
-}
-
-function addLiabilities() {
-  var liabilitieValue = document.getElementById('liabilities');
-  var newLiabilitieValue = document.createElement('div');
-  newLiabilitieValue.innerHTML = `
-      <div class="liability-field">
-          <input type="text" placeholder="Enter Liability">
-          <input type="number" placeholder="Amount">
-      </div>'`;
-
-  liabilitieValue.appendChild(newLiabilitieValue);
-}
-
-function calculateNetWorth() {
-  var assetInputs = document.querySelectorAll('#assets input[type="number"]');
-  var liabilityInputs = document.querySelectorAll('#liabilities input[type="number"]');
-  
-  var totalAssets = 0;
-  var totalLiabilities = 0;
-  
-  assetInputs.forEach(function(asset) {
-    if (asset.value !== '') {
-      totalAssets = totalAssets + parseFloat(asset.value);
-    }
-  });
-  
-  liabilityInputs.forEach(function(liability) {
-    if (liability.value !== '') {
-      totalLiabilities = totalLiabilities + parseFloat(liability.value);
-    }
+  $('#add-income').on('click', function() {
+      addIncome();
+      calculateBudget(); 
   });
 
-  var netWorth = totalAssets - totalLiabilities;
+  function addExpense() {
+      var expenseCategory = $('.expense-category').length + 1;
+      var newExpenseCategory = $('<div class="expense-category"><input type="text" placeholder="Enter expense ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-expense">Delete</button></div>');
+      $('#expense-fields').append(newExpenseCategory);
+  }
 
-  document.getElementById('networth').innerHTML = "Net Worth: $" + netWorth.toFixed(2);
-}
+  $('#add-expense').on('click', function() {
+      addExpense();
+      calculateBudget(); 
+  });
+
+  $(document).on('click', '.delete-income', function() {
+      $(this).closest('.income-field').remove();
+      calculateBudget(); 
+  });
+
+  $(document).on('click', '.delete-expense', function() {
+      $(this).closest('.expense-category').remove();
+      calculateBudget(); 
+  });
+
+  $('#calculate-budget').on('click', function() {
+      calculateBudget(); 
+  });
+
+  function calculateBudget() {
+      var totalIncome = 0;
+      var totalExpenses = 0;
+
+      $('.income-field input[type="number"]').each(function() {
+          var incomeValue = parseFloat($(this).val());
+          if (!isNaN(incomeValue)) {
+              totalIncome += incomeValue;
+          }
+      });
+
+      $('.expense-category input[type="number"]').each(function() {
+          var expenseValue = parseFloat($(this).val());
+          if (!isNaN(expenseValue)) {
+              totalExpenses += expenseValue;
+          }
+      });
+
+      var netIncome = totalIncome;
+      var netExpenses = totalExpenses;
+      var netTotal = totalIncome - totalExpenses;
+
+      $('#income-summary').text("Net Income: $" + netIncome.toFixed(2));
+      $('#expenses-summary').text("Net Expenses: $" + netExpenses.toFixed(2));
+      $('#total-summary').text("Net Monthly Total: $" + netTotal.toFixed(2));
+  }
+});
+
+// Net Worth
+
+$(function() {
+  function addAssets() {
+      var assetValue = $('.asset-field').length + 1;
+      var newAssetValue = $('<div class="asset-field"><input type="text" placeholder="Enter Asset ' + assetValue + '"><input type="number" placeholder="Amount"><button class="delete-asset">Delete</button></div>');
+      $('#assets').append(newAssetValue);
+  }
+
+  $('#add-asset').on('click', function() {
+      addAssets();
+      calculateNetWorth(); 
+  });
+
+  function addLiabilities() {
+      var liabilityCategory = $('.liability-field').length + 1;
+      var newLiabilityCategory = $('<div class="expense-category"><input type="text" placeholder="Enter liability ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
+      $('#liability-field').append(newLiabilityCategory);
+  }
+
+  $('#add-expense').on('click', function() {
+      addExpense();
+      calculateNetWorth(); 
+  });
+
+  $(document).on('click', '.delete-asset', function() {
+      $(this).closest('.income-field').remove();
+      calculateNetWorth(); 
+  });
+
+  $(document).on('click', '.delete-liability', function() {
+      $(this).closest('.expense-category').remove();
+      calculateWorth(); 
+  });
+
+  $('#calculate-networth').on('click', function() {
+      calculateNetWorth(); 
+  });
+
+  function calculateNetWorth() {
+      var totalAssets = 0;
+      var totalLiabilities = 0;
+
+      $('.asset-field input[type="number"]').each(function() {
+          var assetValue = parseFloat($(this).val());
+          if (!isNaN(assetValue)) {
+              totalAssets += assetValue;
+          }
+      });
+
+      $('.liability-field input[type="number"]').each(function() {
+          var liabilityValue = parseFloat($(this).val());
+          if (!isNaN(liabilityValue)) {
+              totalLiabilities += liabilityValue;
+          }
+      });
+
+      var netWorth = totalAssets - totalLiabilities;
+
+      $('#networth-summary').text("Net Worth: $" + netWorth.toFixed(2));
+  }
+});
