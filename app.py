@@ -48,11 +48,11 @@ def sign_up():
         elif not "@" in email or not "." in email:
             error("Invalid email")
         elif len(password) < 8:
-            error("Password too short!" )
+            error("Password is too short" )
         elif len(password) > 20:
-            error("Password too long!")
+            error("Password is too long!")
         elif password != confirmPassword:
-            error("Passwords must match!")
+            error("The passwords must match!")
 
         connection = sql.connect(DATABASE_NAME)
         cursor = connection.cursor()
