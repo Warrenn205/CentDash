@@ -85,12 +85,12 @@ $(function() {
       $('#liability-field').append(newLiabilityCategory);
   }
 
-  $('#add-expense').on('click', function() {
-      addExpense();
+  $('#add-liability').on('click', function() {
+      addLiability();
       calculateNetWorth(); 
   });
 
-  $(document).on('click', '.delete-asset', function() {
+  $(document).on('click', '.delete-liability', function() {
       $(this).closest('.income-field').remove();
       calculateNetWorth(); 
   });
@@ -101,7 +101,7 @@ $(function() {
   });
 
   $('#calculate-networth').on('click', function() {
-      calculateNetWorth(); 
+      addLiabilities(); 
   });
 
   function calculateNetWorth() {
@@ -125,5 +125,9 @@ $(function() {
       var netWorth = totalAssets - totalLiabilities;
 
       $('#networth-summary').text("Net Worth: $" + netWorth.toFixed(2));
+
+      $('#calculate-networth').on('click', function() {
+        calculateNetWorth(); 
+    });
   }
 });
