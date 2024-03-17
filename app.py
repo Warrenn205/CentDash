@@ -15,7 +15,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                     firstName TEXT NOT NULL,
                     lastName TEXT NOT NULL,
                     email TEXT PRIMARY KEY NOT NULL,
-                    password TEXT NOT NULL,
+                    password TEXT NOT NULL
                 )''')
 
 connection.commit()
