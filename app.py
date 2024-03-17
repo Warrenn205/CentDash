@@ -11,6 +11,10 @@ def main():
 def login():
     return render_template("signin.html")
 
+@app.route('/signup')
+def sign_up():
+    return render_template("signup.html")
+
 @app.route('/page')
 def page():
     return render_template("centdashpage.html")

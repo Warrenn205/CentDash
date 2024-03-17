@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='signup.css')}}">
+    </head>
+    <body>
+        <div class="box">
+            <form method="post" action="{{ url_for('login') }}"></form>
+                <a href="#"><img src="{{url_for('static', filename='CentDash.png')}}"  class="logo" width="200" height="65"></a>
+                <h1></h1>
+                <div class="input">
+                <input type="text" class="firstname" id="FirstName" name = "First Name" placeholder="First Name"><br>
+                </div>
+                <div class="input">
+                <input type="text" class="lastname" id="LastName" name = "Last Name" placeholder="Last Name"><br>
+                </div>
+                <div class="input">
+                <input type="email" class="signin" id="Email" name = "Email" placeholder="Email"><br>
+                </div>
+                <div class="input">
+                <input type="password" class="enterpassword" id="Password" name = "Password" placeholder="Password"><br>
+                </div>
+                <a href="/page"><input type="submit" value="Sign Up"></a>
+                <label><input type="checkbox">Remember Me</label>
+                <p>Already have an account?<a href="signup">Sign in</a></p>
+            </form>
+        </div>
+    </body>
+</html>
