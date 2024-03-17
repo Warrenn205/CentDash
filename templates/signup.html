@@ -7,25 +7,31 @@
     </head>
     <body>
         <div class="box">
-            <form method="post" action="{{ url_for('login') }}"></form>
+            <form method="post" action="{{ url_for('signup') }}"></form>
                 <a href="#"><img src="{{url_for('static', filename='CentDash.png')}}"  class="logo" width="200" height="65"></a>
                 <h1></h1>
                 <div class="input">
-                <input type="text" class="firstname" id="FirstName" name = "First Name" placeholder="First Name"><br>
+                <input type="text" class="firstname" name="FirstName" placeholder="First Name"><br>
                 </div>
                 <div class="input">
-                <input type="text" class="lastname" id="LastName" name = "Last Name" placeholder="Last Name"><br>
+                <input type="text" class="lastname" name="LastName" placeholder="Last Name"><br>
                 </div>
                 <div class="input">
-                <input type="email" class="signin" id="Email" name = "Email" placeholder="Email"><br>
+                <input type="email" class="signin"  name="Email" placeholder="Email"><br>
                 </div>
                 <div class="input">
-                <input type="password" class="enterpassword" id="Password" name = "Password" placeholder="Password"><br>
+                <input type="password" class="enterpassword" name="Password" placeholder="Password"><br>
+                </div>
+                <input type="password" class="confirmpassword" name="ConfirmPassword" placeholder="Password"><br>
                 </div>
                 <a href="/page"><input type="submit" value="Sign Up"></a>
                 <label><input type="checkbox">Remember Me</label>
                 <p>Already have an account?<a href="login">Sign in</a></p>
             </form>
+            <p>You must enter a valid emali and passwords must be between 8 to 20 characters long.</p>
+            {% if errorMsg %}
+            <p>{{ errorMsg }}</p>
+            {% endif %}
         </div>
     </body>
 </html>
