@@ -78,30 +78,30 @@ $(function() {
       addAssets();
       calculateNetWorth(); 
   });
-
-  function addLiabilities() {
-      var liabilityCategory = $('.liability-field').length + 1;
-      var newLiabilityCategory = $('<div class="expense-category"><input type="text" placeholder="Enter liability ' + liabilityCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
-      $('#liability-field').append(newLiabilityCategory);
-  }
-
+  
   $('#add-liability').on('click', function() {
       addLiability();
       calculateNetWorth(); 
   });
 
-  $(document).on('click', '.delete-liability', function() {
-      $(this).closest('.income-field').remove();
+  function addLiability() {
+      var liabilityCategory = $('.liability-field').length + 1;
+      var newLiabilityCategory = $('<div class="liability-field"><input type="text" placeholder="Enter liability ' + liabilityCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
+      $('#liabilities').append(newLiabilityCategory);
+  }
+
+  $(document).on('click', '.delete-asset', function() {
+      $(this).closest('.asset-field').remove();
       calculateNetWorth(); 
   });
 
   $(document).on('click', '.delete-liability', function() {
-      $(this).closest('.expense-category').remove();
-      calculateWorth(); 
+      $(this).closest('.liability-field').remove();
+      calculateNetWorth(); 
   });
 
   $('#calculate-networth').on('click', function() {
-      addLiabilities(); 
+      calculateNetWorth(); 
   });
 
   function calculateNetWorth() {

@@ -4,6 +4,7 @@ import sqlite3 as sql
 app = Flask(__name__)
 
 DATABASE_NAME = "database.db"
+app.secret_key = "ART56HBCXTY-I876T-098NU"
 
 def create_connection():
     return sql.connect(DATABASE_NAME)
@@ -11,7 +12,7 @@ def create_connection():
 connection = sql.connect(DATABASE_NAME)
 cursor = connection.cursor()
 
-cursor.execute('''CREATE TABLE IF NOT EXISTS users (
+cursor.execute('''CREATE TABLE IF NOT EXISTS user (
                     firstName TEXT NOT NULL,
                     lastName TEXT NOT NULL,
                     email TEXT PRIMARY KEY NOT NULL,
@@ -26,8 +27,8 @@ def main():
     return render_template("centdash.html")
 
 @app.route('/signup', methods=["POST", "GET"])
-def sign_up():
-     if request.method == "POST":
+def signup():
+    if request.method == "POST":
         firstName = request.form["FirstName"]
         lastName = request.form["LastName"]
         email = request.form["Email"]
@@ -35,42 +36,61 @@ def sign_up():
         confirmPassword = request.form["ConfirmPassword"]
 
         def error(errorMsg):
-            render_template ('centdash.html')
-            return render_template("signup.html",
-                PageName = "SignUp",  
-                errorMsg = errorMsg     
-            )
-        
+            return render_template("signup.html", errorMsg=errorMsg)
+
         if len(email) < 5:
-            error("Invalid email")
+            return error("You must use a valid email")
         elif len(email) > 100:
-            error("Invalid email")
+            return error("You must use a valid email")
         elif not "@" in email or not "." in email:
-            error("Invalid email")
-        elif len(password) < 8:
-            error("Password is too short" )
-        elif len(password) > 20:
-            error("Password is too long!")
+            return error("Invalid email")
         elif password != confirmPassword:
-            error("The passwords must match!")
+            return error("The passwords must be the same")
 
         connection = sql.connect(DATABASE_NAME)
         cursor = connection.cursor()
-        cursor.execute(f'''INSERT INTO users (firstName, lastName, email, password) 
-                            VALUES("{firstName}", "{lastName}", "{email}", "{password}"''')
+        cursor.execute('''INSERT INTO user (firstName, lastName, email, password) 
+                          VALUES (?, ?, ?, ?)''', (firstName, lastName, email, password))
         connection.commit()
         connection.close()
 
-        return redirect(url_for('signin.html'))
-     else:
-        render_template ('centdash.html')
-        return render_template("signUp.html",
-            PageName = "SignUp"        
-        )
+        return redirect(url_for('login'))
+    else:
+        return render_template("signup.html")
 
-@app.route('/login')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("signin.html")
+    if request.method == "POST":
+        email = request.form["Email"]
+        password = request.form["Password"]
+
+        if not email or not password:
+            return render_template("signin.html", errorMsg="Please enter both email and password.")
+
+        connection = sql.connect(DATABASE_NAME)
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM user WHERE email = ?', (email,))
+        result = cursor.fetchall()
+
+        if not result or not result[0]:
+            connection.close()
+            return render_template("signin.html", errorMsg="This username is incorrect")
+
+        cursor.execute('SELECT * FROM user WHERE email = ? AND password = ?', (email, password))
+        result = cursor.fetchall()
+
+        if not result or not result[0]:
+            connection.close()
+            return render_template("signin.html", errorMsg="This password is incorrect")
+
+        connection.commit()
+        connection.close()
+
+        session["user"] = email
+        return redirect(url_for('dashboard'))
+    else:
+        return render_template("signin.html", errorMsg="Please enter both email and password.")
 
 @app.route('/page')
 def page():
