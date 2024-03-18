@@ -75,3 +75,11 @@ input[type="email"] {
   input [type="checkbox"] {
     font-family: Arial, Helvetica, sans-serif;
   }
+
+label {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
