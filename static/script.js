@@ -115,27 +115,32 @@ $(document).ready(function() {
     }
 
     function updateStatementsPage(inputData) {
-        // Update income summary
         var incomeSummaryHTML = '';
         inputData.income.forEach(function(incomeItem) {
             incomeSummaryHTML += '<p>' + incomeItem.stream + ': $' + incomeItem.amount.toFixed(2) + '</p>';
         });
         $('#income').html(incomeSummaryHTML);
         
-        // Calculate total income
         var totalIncome = inputData.income.reduce(function(total, item) {
             return total + item.amount;
         }, 0);
         
-        // Display total income
         $('#total-income').text('Total Income: $' + totalIncome.toFixed(2));
 
-        // Update expense summary
         var expenseSummaryHTML = '';
         inputData.expenses.forEach(function(expenseItem) {
-            expenseSummaryHTML += '<p>' + expenseItem.expense + ': $' + expenseItem.amount.toFixed(2) + '</p>';
+            expenseSummaryHTML += '<p>' + expenseItem.category + ': $' + expenseItem.amount.toFixed(2) + '</p>';
         })
         $('#expenses').html(expenseSummaryHTML);
+
+        var totalExpenses = inputData.expenses.reduce(function(total, item) {
+             return total + item.amount;
+         }, 0);
+
+        $('#total-expenses').text('Total Expenses: $' + totalExpenses.toFixed(2));
+
+        var netIncome = totalIncome - totalExpenses;
+        $('#net-income').text('Net Income: $' + netIncome.toFixed(2));
 
     }
     
@@ -162,48 +167,7 @@ $(document).ready(function() {
 // Net Worth
 
 $(document).ready(function() {
-    
-    var storedAssetLiabilityData = JSON.parse(localStorage.getItem('assetLiabilityData')) || { assets: [], liabilities: [] };
-    if (storedAssetLiabilityData) {
-        updateUIWithNetWorthData(storedAssetLiabilityData);
-        calculateNetWorth();
-    }
-
-   
-    $('#add-asset').on('click', function() {
-        addAsset();
-    });
-
-    
-    $('#add-liability').on('click', function() {
-        addLiability();
-    });
-
-   
-    $(document).on('click', '.delete-asset', function() {
-        $(this).closest('.asset-field').remove();
-        saveAndRefreshNetWorthData();
-        calculateNetWorth(); 
-    });
-
-    
-    $(document).on('click', '.delete-liability', function() {
-        $(this).closest('.liability-field').remove();
-        saveAndRefreshNetWorthData();
-        calculateNetWorth(); 
-    });
-
-    
-    $('#calculate-networth').on('click', function() {
-        calculateNetWorth();
-    });
-
-    
-    $(document).on('input', '.asset-field input, .liability-field input', function() {
-        saveAndRefreshNetWorthData();
-        calculateNetWorth();
-    });
-
+      
     
     function addAsset() {
         var assetValue = $('.asset-field').length + 1;
@@ -211,30 +175,45 @@ $(document).ready(function() {
         $('#assets').append(newAssetValue);
     }
 
-    
+    $('#add-asset').on('click', function() {
+        addAsset();
+        calculateNetWorth(getAssetLiabilityData());
+    });
+
+    $(document).on('click', '.delete-asset', function() {
+        $(this).closest('.asset-field').remove();
+        saveAndRefreshNetWorthData();
+        calculateNetWorth(getAssetLiabilityData()); 
+    });
+
+
     function addLiability() {
         var liabilityCategory = $('.liability-field').length + 1;
         var newLiabilityCategory = $('<div class="liability-field"><input type="text" placeholder="Enter liability ' + liabilityCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
         $('#liabilities').append(newLiabilityCategory);
     }
 
-  
-    function calculateNetWorth() {
+    $('#add-liability').on('click', function() {
+        addLiability();
+        calculateNetWorth(getAssetLiabilityData());
+    });
+
+    $(document).on('click', '.delete-liability', function() {
+        $(this).closest('.liability-field').remove();
+        saveAndRefreshNetWorthData();
+        calculateNetWorth(getAssetLiabilityData()); 
+    });
+
+    function calculateNetWorth(assetLiabilityData) {
         var totalAssets = 0;
         var totalLiabilities = 0;
 
-        $('.asset-field input[type="number"]').each(function() {
-            var assetValue = parseFloat($(this).val());
-            if (!isNaN(assetValue)) {
-                totalAssets += assetValue;
-            }
+        assetLiabilityData.assets.forEach(function(assetItem) {
+            totalAssets += assetItem.amount;
         });
 
-        $('.liability-field input[type="number"]').each(function() {
-            var liabilityValue = parseFloat($(this).val());
-            if (!isNaN(liabilityValue)) {
-                totalLiabilities += liabilityValue;
-            }
+        assetLiabilityData.liabilities.forEach(function(liabilitiesItem) {
+            totalLiabilities += liabilitiesItem.amount;
         });
 
         var netWorth = totalAssets - totalLiabilities;
@@ -248,10 +227,29 @@ $(document).ready(function() {
         localStorage.setItem('calculatedNetWorthData', JSON.stringify(calculatedNetWorthData));
     }
 
+
+    $('#calculate-networth').on('click', function() {
+        calculateNetWorth(getAssetLiabilityData());
+    });
+
+    
+    $(document).on('input', '.asset-field input, .liability-field input', function() {
+        saveAndRefreshNetWorthData();
+        calculateNetWorth(getAssetLiabilityData());
+    });
+
+    var storedAssetLiabilityData = JSON.parse(localStorage.getItem('assetLiabilityData')) || { assets: [], liabilities: [] };
+    if (storedAssetLiabilityData) {
+        updateUIWithNetWorthData(storedAssetLiabilityData);
+        updateStatementsPage(storedAssetLiabilityData);
+        calculateNetWorth(storedAssetLiabilityData);
+    }
     
     function saveAndRefreshNetWorthData() {
         var assetLiabilityData = getAssetLiabilityData();
         localStorage.setItem('assetLiabilityData', JSON.stringify(assetLiabilityData));
+
+        updateStatementsPage(assetLiabilityData);
     }
 
     
@@ -280,6 +278,36 @@ $(document).ready(function() {
         return { assets: assetData, liabilities: liabilityData };
     }
 
+
+    function updateStatementsPage(assetLiabilityData) {
+        var assetsSummaryHTML = '';
+        assetLiabilityData.assets.forEach(function(assetItem) {
+            assetsSummaryHTML += '<p>' + assetItem.name + ': $' + assetItem.amount.toFixed(2) + '</p>';
+        });
+        $('#assetData').html(assetsSummaryHTML);
+        
+        var totalAssets = assetLiabilityData.assets.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        
+        $('#total-assets').text('Total Assets: $' + totalAssets.toFixed(2));
+
+        var liabilitiesSummaryHTML = '';
+        assetLiabilityData.liabilities.forEach(function(liabilityItem) {
+            liabilitiesSummaryHTML += '<p>' + liabilityItem.name + ': $' + liabilityItem.amount.toFixed(2) + '</p>';
+        })
+        $('#liabilitiesData').html(liabilitiesSummaryHTML);
+
+        var totalLiabilities = assetLiabilityData.liabilities.reduce(function(total, item) {
+             return total + item.amount;
+         }, 0);
+
+        $('#total-liabilities').text('Total Liabilities: $' + totalLiabilities.toFixed(2));
+
+        var netWorth = totalAssets - totalLiabilities;
+        $('#net-worth-data').text('Net Worth: $' + netWorth.toFixed(2));
+
+    }
     
     function updateUIWithNetWorthData(data) {
         
