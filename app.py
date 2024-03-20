@@ -91,6 +91,7 @@ def signup():
                           VALUES (?, ?, ?, ?)''', (firstName, lastName, email, password))
         cursor.execute('''INSERT INTO budgets (user_id, data) VALUES (?, ?)''', (email, "{}"))
         cursor.execute('''INSERT INTO net_worth (user_id, data) VALUES (?, ?)''', (email, "{}"))
+        cursor.execute('''INSERT INTO savings (user_id, data) VALUES (?,?)''', (email, "{}"))
         connection.commit()
         connection.close()
 
@@ -191,9 +192,6 @@ def networth():
             networth_data = "{}" 
         return render_template("networth.html", networth_data=networth_data)
 
-@app.route('/savings')
-def savings():
-    return render_template("savings.html")
 
 @app.route('/statements')
 def statements():

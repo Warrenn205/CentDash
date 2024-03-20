@@ -142,7 +142,10 @@ $(document).ready(function() {
             $('#expense-fields').append(newExpenseCategory);
         });
     }
+
+    
 });
+
 
 // Net Worth
 
