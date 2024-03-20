@@ -1,66 +1,40 @@
-// Budgets
-
+// Budget function for "Budgets" tab
 $(document).ready(function() {
-    
-    var storedInputData = JSON.parse(localStorage.getItem('inputData')) || { income: [], expenses: [] };
-    if (storedInputData) {
-        updateUIWithBudgetData(storedInputData);
-        updateStatementsPage(storedInputData);
-        calculateBudget(storedInputData);
-    }
 
-    
-    $('#add-income').on('click', function() {
-        addIncome();
-        calculateBudget(getBudgetData());
-    });
-
-    
-    $('#add-expense').on('click', function() {
-        addExpense();
-        calculateBudget(getBudgetData()); 
-    });
-
-    
-    $(document).on('click', '.delete-income', function() {
-        $(this).closest('.income-field').remove();
-        saveAndRefreshBudgetData();
-        calculateBudget(getBudgetData()); 
-    });
-
-    
-    $(document).on('click', '.delete-expense', function() {
-        $(this).closest('.expense-category').remove();
-        saveAndRefreshBudgetData();
-        calculateBudget(getBudgetData()); 
-    });
-
-   
-    $('#calculate-budget').on('click', function() {
-        calculateBudget(getBudgetData());
-    });
-
-    
-    $(document).on('input', '.income-field input, .expense-category input', function() {
-        saveAndRefreshBudgetData();
-        calculateBudget(getBudgetData());
-    });
-
-    
     function addIncome() {
         var incomeStream = $('.income-field').length + 1;
         var newIncomeStream = $('<div class="income-field"><input type="text" placeholder="Enter Stream of Income ' + incomeStream + '"><input type="number" placeholder="Amount"><button class="delete-income">Delete</button></div>');
         $('#income-streams').append(newIncomeStream);
     }
 
-    
-    function addExpense() {
+    $('#add-income').on('click', function() {
+        addIncome();
+        calculateBudget(getBudgetData());
+    });
+
+    $(document).on('click', '.delete-income', function() {
+        $(this).closest('.income-field').remove();
+        saveAndRefreshBudgetData();
+        calculateBudget(getBudgetData()); 
+    });
+
+      function addExpense() {
         var expenseCategory = $('.expense-category').length + 1;
         var newExpenseCategory = $('<div class="expense-category"><input type="text" placeholder="Enter expense ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-expense">Delete</button></div>');
         $('#expense-fields').append(newExpenseCategory);
     }
 
-   
+     $('#add-expense').on('click', function() {
+        addExpense();
+        calculateBudget(getBudgetData()); 
+    });
+
+    $(document).on('click', '.delete-expense', function() {
+        $(this).closest('.expense-category').remove();
+        saveAndRefreshBudgetData();
+        calculateBudget(getBudgetData()); 
+    });
+
     function calculateBudget(inputData) {
         var totalIncome = 0;
         var totalExpenses = 0;
@@ -91,9 +65,48 @@ $(document).ready(function() {
         };
         localStorage.setItem('calculatedData', JSON.stringify(calculatedData));
     }
-    
 
-   
+    $('#calculate-budget').on('click', function() {
+        calculateBudget(getBudgetData());
+    });
+
+    $(document).on('input', '.income-field input, .expense-category input', function() {
+        saveAndRefreshBudgetData();
+        calculateBudget(getBudgetData());
+    });
+
+    var storedInputData = JSON.parse(localStorage.getItem('inputData')) || { income: [], expenses: [] };
+    if (storedInputData) {
+        updateUIWithBudgetData(storedInputData);
+        updateStatementsPage(storedInputData);
+        calculateBudget(storedInputData);
+    }
+
+    function getBudgetData() {
+        var incomeData = [];
+        var expenseData = [];
+
+       
+        $('.income-field').each(function() {
+            var incomeStream = $(this).find('input[type="text"]').val();
+            var amount = parseFloat($(this).find('input[type="number"]').val());
+            if (incomeStream && !isNaN(amount)) {
+                incomeData.push({ stream: incomeStream, amount: amount });
+            }
+        });
+
+        
+        $('.expense-category').each(function() {
+            var expenseCategory = $(this).find('input[type="text"]').val();
+            var amount = parseFloat($(this).find('input[type="number"]').val());
+            if (expenseCategory && !isNaN(amount)) {
+                expenseData.push({ category: expenseCategory, amount: amount });
+            }
+        });
+
+        return { income: incomeData, expenses: expenseData };
+    }
+
     function saveAndRefreshBudgetData() {
         var inputData = getBudgetData();
         localStorage.setItem('inputData', JSON.stringify(inputData));
@@ -126,31 +139,6 @@ $(document).ready(function() {
 
     }
     
-    function getBudgetData() {
-        var incomeData = [];
-        var expenseData = [];
-
-       
-        $('.income-field').each(function() {
-            var incomeStream = $(this).find('input[type="text"]').val();
-            var amount = parseFloat($(this).find('input[type="number"]').val());
-            if (incomeStream && !isNaN(amount)) {
-                incomeData.push({ stream: incomeStream, amount: amount });
-            }
-        });
-
-        
-        $('.expense-category').each(function() {
-            var expenseCategory = $(this).find('input[type="text"]').val();
-            var amount = parseFloat($(this).find('input[type="number"]').val());
-            if (expenseCategory && !isNaN(amount)) {
-                expenseData.push({ category: expenseCategory, amount: amount });
-            }
-        });
-
-        return { income: incomeData, expenses: expenseData };
-    }
-
     
     function updateUIWithBudgetData(data) {
         
@@ -168,8 +156,6 @@ $(document).ready(function() {
             $('#expense-fields').append(newExpenseCategory);
         });
     }
-
-    
 });
 
 
