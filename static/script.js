@@ -5,42 +5,45 @@ $(document).ready(function() {
     var storedInputData = JSON.parse(localStorage.getItem('inputData')) || { income: [], expenses: [] };
     if (storedInputData) {
         updateUIWithBudgetData(storedInputData);
-        calculateBudget();
+        updateStatementsPage(storedInputData);
+        calculateBudget(storedInputData);
     }
 
     
     $('#add-income').on('click', function() {
         addIncome();
+        calculateBudget(getBudgetData());
     });
 
     
     $('#add-expense').on('click', function() {
         addExpense();
+        calculateBudget(getBudgetData()); 
     });
 
     
     $(document).on('click', '.delete-income', function() {
         $(this).closest('.income-field').remove();
         saveAndRefreshBudgetData();
-        calculateBudget(); 
+        calculateBudget(getBudgetData()); 
     });
 
     
     $(document).on('click', '.delete-expense', function() {
         $(this).closest('.expense-category').remove();
         saveAndRefreshBudgetData();
-        calculateBudget(); 
+        calculateBudget(getBudgetData()); 
     });
 
    
     $('#calculate-budget').on('click', function() {
-        calculateBudget();
+        calculateBudget(getBudgetData());
     });
 
     
     $(document).on('input', '.income-field input, .expense-category input', function() {
         saveAndRefreshBudgetData();
-        calculateBudget();
+        calculateBudget(getBudgetData());
     });
 
     
@@ -58,47 +61,70 @@ $(document).ready(function() {
     }
 
    
-    function calculateBudget() {
+    function calculateBudget(inputData) {
         var totalIncome = 0;
         var totalExpenses = 0;
-
-        $('.income-field input[type="number"]').each(function() {
-            var incomeValue = parseFloat($(this).val());
-            if (!isNaN(incomeValue)) {
-                totalIncome += incomeValue;
-            }
+    
+        // Calculate total income
+        inputData.income.forEach(function(incomeItem) {
+            totalIncome += incomeItem.amount;
         });
-
-        $('.expense-category input[type="number"]').each(function() {
-            var expenseValue = parseFloat($(this).val());
-            if (!isNaN(expenseValue)) {
-                totalExpenses += expenseValue;
-            }
+    
+        // Calculate total expenses
+        inputData.expenses.forEach(function(expenseItem) {
+            totalExpenses += expenseItem.amount;
         });
-
-        var netIncome = totalIncome;
-        var netExpenses = totalExpenses;
+    
+        // Calculate net total
         var netTotal = totalIncome - totalExpenses;
-
-        $('#income-summary').text("Net Income: $" + netIncome.toFixed(2));
-        $('#expenses-summary').text("Net Expenses: $" + netExpenses.toFixed(2));
-        $('#total-summary').text("Net Monthly Total: $" + netTotal.toFixed(2));
-
-       
+    
+        // Update HTML elements with the calculated values
+        $('#income-summary').text("Total Income: $" + totalIncome.toFixed(2));
+        $('#expenses-summary').text("Total Expenses: $" + totalExpenses.toFixed(2));
+        $('#total-summary').text("Net Income: $" + netTotal.toFixed(2));
+    
+        // Store calculated data in local storage
         var calculatedData = {
-            netIncome: netIncome,
-            netExpenses: netExpenses,
+            totalIncome: totalIncome,
+            totalExpenses: totalExpenses,
             netTotal: netTotal
         };
         localStorage.setItem('calculatedData', JSON.stringify(calculatedData));
     }
+    
 
    
     function saveAndRefreshBudgetData() {
         var inputData = getBudgetData();
         localStorage.setItem('inputData', JSON.stringify(inputData));
+
+        updateStatementsPage(inputData);
     }
 
+    function updateStatementsPage(inputData) {
+        // Update income summary
+        var incomeSummaryHTML = '';
+        inputData.income.forEach(function(incomeItem) {
+            incomeSummaryHTML += '<p>' + incomeItem.stream + ': $' + incomeItem.amount.toFixed(2) + '</p>';
+        });
+        $('#income').html(incomeSummaryHTML);
+        
+        // Calculate total income
+        var totalIncome = inputData.income.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        
+        // Display total income
+        $('#total-income').text('Total Income: $' + totalIncome.toFixed(2));
+
+        // Update expense summary
+        var expenseSummaryHTML = '';
+        inputData.expenses.forEach(function(expenseItem) {
+            expenseSummaryHTML += '<p>' + expenseItem.expense + ': $' + expenseItem.amount.toFixed(2) + '</p>';
+        })
+        $('#expenses').html(expenseSummaryHTML);
+
+    }
     
     function getBudgetData() {
         var incomeData = [];
