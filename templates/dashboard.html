@@ -44,41 +44,46 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function () {
-            // Get data for budgets chart
-            var income = parseFloat($('#income-card h3').text().replace('$', '').trim());
-            var expenses = parseFloat($('#expenses-card h3').text().replace('$', '').trim());
-            var netIncome = parseFloat($('#net-income-card h3').text().replace('$', '').trim());
-    
-            // Create budgets chart
-            var ctxBudgets = document.getElementById('bar-chart-budgets').getContext('2d');
-            var budgetsChart = new Chart(ctxBudgets, {
-                type: 'bar',
-                data: {
-                    labels: ['Income', 'Expenses', 'Net Income'],
-                    datasets: [{
-                        label: 'Amount ($)',
-                        data: [income, expenses, netIncome],
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.5)',
-                            'rgba(255, 99, 132, 0.5)',
-                            'rgba(75, 192, 192, 0.5)',
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(75, 192, 192, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+        function initializeCharts() {
+        // Get initial data for budgets chart
+        var initialData = JSON.parse(localStorage.getItem('calculatedData'));
+        var totalIncome = initialData.totalIncome || 0;
+        var totalExpenses = initialData.totalExpenses || 0;
+        var netIncome = initialData.netTotal || 0;
+
+        // Create budgets chart
+        var ctxBudgets = document.getElementById('bar-chart-budgets').getContext('2d');
+        var budgetsChart = new Chart(ctxBudgets, {
+            type: 'bar',
+            data: {
+                labels: ['Income', 'Expenses', 'Net Income'],
+                datasets: [{
+                    label: 'Amount ($)',
+                    data: [totalIncome, totalExpenses, netIncome],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
+        });
+    }
+    
+    initializeCharts();
     
             // Get data for net worth chart
             var assets = parseFloat($('#assets-card h3').text().replace('$', '').trim());
@@ -116,6 +121,8 @@
                 }
             });
         });
+
+        
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>

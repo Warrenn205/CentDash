@@ -183,7 +183,6 @@ $(document).ready(function() {
     }
 });
 
-
 // Net Worth
 
 $(document).ready(function() {
