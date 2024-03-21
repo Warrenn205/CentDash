@@ -4,23 +4,119 @@
         <h1>Dashboard</h1>
         <h3>Budgets</h3>
         <div class="dashboard-content">
-            <div class="dashboard-card">
-                <h3>Income</h3>
-                <h2>Total Income:</h2>
+            <div class="dashboard-card" id="income-card">
                 <h3>$0.00</h3>
             </div>
-            <div class="dashboard-card">
-                <h2>Expenses</h2>
-                <p>Widget content goes here...</p>
+            <div class="dashboard-card" id="expenses-card">
+                <h3>$0.00</h3>
             </div>
-            
+            <div class="dashboard-card" id="net-income-card">
+                <h3>$0.00</h3>
+            </div>
         </div>
+        <br>
+        <h3>Bar Chart for Budgets</h3>
+        <canvas id="bar-chart-budgets"></canvas>
+        <br> 
+        <h3>Net Worth</h3>
+        <div class="dashboard-content">
+        <div class="dashboard-card" id="assets-card">
+        <h3>Assets</h3>
+        <h2>Total Assets:</h2>
+        <h3>$0.00</h3>
     </div>
+    <div class="dashboard-card" id="liabiitlies-card">
+        <h3>Liablilites</h3>
+        <h2>Total Liabilities:</h2>
+        <h3>$0.00</h3>
     </div>
+    <div class="dashboard-card" id="net-worth-card">
+        <h3>Net Worth</h3>
+        <h2>Net Worth:</h2>
+        <h3>$0.00</h3>
+    </div> 
+    </div>
+    <br>
+    <h3>Bar Chart for Net Worth</h3>
+    <canvas id="bar-chart-net-worth"></canvas>
+    <br> 
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Get data for budgets chart
+            var income = parseFloat($('#income-card h3').text().replace('$', '').trim());
+            var expenses = parseFloat($('#expenses-card h3').text().replace('$', '').trim());
+            var netIncome = parseFloat($('#net-income-card h3').text().replace('$', '').trim());
+    
+            // Create budgets chart
+            var ctxBudgets = document.getElementById('bar-chart-budgets').getContext('2d');
+            var budgetsChart = new Chart(ctxBudgets, {
+                type: 'bar',
+                data: {
+                    labels: ['Income', 'Expenses', 'Net Income'],
+                    datasets: [{
+                        label: 'Amount ($)',
+                        data: [income, expenses, netIncome],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            // Get data for net worth chart
+            var assets = parseFloat($('#assets-card h3').text().replace('$', '').trim());
+            var liabilities = parseFloat($('#liabilities-card h3').text().replace('$', '').trim());
+            var netWorth = parseFloat($('#net-worth-card h3').text().replace('$', '').trim());
+    
+            // Create net worth chart
+            var ctxNetWorth = document.getElementById('bar-chart-net-worth').getContext('2d');
+            var netWorthChart = new Chart(ctxNetWorth, {
+                type: 'bar',
+                data: {
+                    labels: ['Assets', 'Liabilities', 'Net Worth'],
+                    datasets: [{
+                        label: 'Amount ($)',
+                        data: [assets, liabilities, netWorth],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-            crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

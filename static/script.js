@@ -79,6 +79,7 @@ $(document).ready(function() {
     if (storedInputData) {
         updateUIWithBudgetData(storedInputData);
         updateStatementsPage(storedInputData);
+        updateDashboardPage(storedInputData);
         calculateBudget(storedInputData);
     }
 
@@ -112,6 +113,7 @@ $(document).ready(function() {
         localStorage.setItem('inputData', JSON.stringify(inputData));
 
         updateStatementsPage(inputData);
+        updateDashboardPage(inputData);
     }
 
     function updateStatementsPage(inputData) {
@@ -143,7 +145,25 @@ $(document).ready(function() {
         $('#net-income').text('Net Income: $' + netIncome.toFixed(2));
 
     }
+
+    function updateDashboardPage(inputData) {
+        // Calculate total income
+        var totalIncome = inputData.income.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        $('#income-card h3').text('Total Income: $' + totalIncome.toFixed(2));
     
+        // Calculate total expenses
+        var totalExpenses = inputData.expenses.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        $('#expenses-card h3').text('Total Expenses: $' + totalExpenses.toFixed(2));
+    
+        // Calculate net income
+        var netIncome = totalIncome - totalExpenses;
+        $('#net-income-card h3').text('Net Income: $' + netIncome.toFixed(2));
+
+    }
     
     function updateUIWithBudgetData(data) {
         
