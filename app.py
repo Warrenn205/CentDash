@@ -129,17 +129,17 @@ def login():
         connection.close()
 
         session["user"] = email
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('welcome'))
     else:
         return render_template("signin.html", errorMsg="Please enter both email and password.")
 
-@app.route('/page')
-def page():
+@app.route('/welcome')
+def welcome():
     return render_template("centdashpage.html")
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("centdashpage.html")
+    return render_template("dashboard.html")
 
 @app.route('/budgets', methods=['GET', 'POST'])
 def budgets():
