@@ -38,26 +38,21 @@ $(document).ready(function() {
     function calculateBudget(inputData) {
         var totalIncome = 0;
         var totalExpenses = 0;
-    
-        // Calculate total income
+
         inputData.income.forEach(function(incomeItem) {
             totalIncome += incomeItem.amount;
         });
     
-        // Calculate total expenses
         inputData.expenses.forEach(function(expenseItem) {
             totalExpenses += expenseItem.amount;
         });
     
-        // Calculate net total
         var netTotal = totalIncome - totalExpenses;
     
-        // Update HTML elements with the calculated values
         $('#income-summary').text("Total Income: $" + totalIncome.toFixed(2));
         $('#expenses-summary').text("Total Expenses: $" + totalExpenses.toFixed(2));
         $('#total-summary').text("Net Income: $" + netTotal.toFixed(2));
     
-        // Store calculated data in local storage
         var calculatedData = {
             totalIncome: totalIncome,
             totalExpenses: totalExpenses,
@@ -147,19 +142,16 @@ $(document).ready(function() {
     }
 
     function updateDashboardPage(inputData) {
-        // Calculate total income
         var totalIncome = inputData.income.reduce(function(total, item) {
             return total + item.amount;
         }, 0);
         $('#income-card h3').text('Total Income: $' + totalIncome.toFixed(2));
     
-        // Calculate total expenses
         var totalExpenses = inputData.expenses.reduce(function(total, item) {
             return total + item.amount;
         }, 0);
         $('#expenses-card h3').text('Total Expenses: $' + totalExpenses.toFixed(2));
     
-        // Calculate net income
         var netIncome = totalIncome - totalExpenses;
         $('#net-income-card h3').text('Net Income: $' + netIncome.toFixed(2));
 
@@ -183,7 +175,7 @@ $(document).ready(function() {
     }
 });
 
-// Net Worth
+// Net Worth function for "Net Worth" tab
 
 $(document).ready(function() {
       
@@ -333,19 +325,16 @@ $(document).ready(function() {
     }
     
     function updateDashboardPage(assetLiabilityData) {
-        // Calculate total income
         var totalAssets = assetLiabilityData.assets.reduce(function(total, item) {
             return total + item.amount;
         }, 0);
         $('#assets-card h3').text('Total Assets: $' + totalAssets.toFixed(2));
     
-        // Calculate total expenses
         var totalLiabilities = assetLiabilityData.liabilities.reduce(function(total, item) {
             return total + item.amount;
         }, 0);
         $('#liabilities-card h3').text('Total Liabilities: $' + totalLiabilities.toFixed(2));
     
-        // Calculate net income
         var netWorth = totalAssets - totalLiabilities;
         $('#net-worth-card h3').text('Net Worth: $' + netWorth.toFixed(2));
 

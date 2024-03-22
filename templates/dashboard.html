@@ -39,13 +39,11 @@
     <script>
     $(document).ready(function () {
     function initializeCharts() {
-        // Get initial data for budgets chart
         var budgetData = JSON.parse(localStorage.getItem('calculatedData'));
         var totalIncome = budgetData.totalIncome || 0;
         var totalExpenses = budgetData.totalExpenses || 0;
         var netIncome = budgetData.netTotal || 0;
 
-        // Create budgets chart
         var ctxBudgets = document.getElementById('bar-chart-budgets').getContext('2d');
         var budgetsChart = new Chart(ctxBudgets, {
             type: 'bar',
@@ -76,13 +74,11 @@
             }
         });
 
-        // Get initial data for net worth chart
         var netWorthData = JSON.parse(localStorage.getItem('calculatedNetWorthData'));
         var totalAssets = netWorthData.totalAssets || 0;
         var totalLiabilities = netWorthData.totalLiabilities || 0;
         var netWorth = netWorthData.netWorth || 0;
 
-        // Create net worth chart
         var ctxNetWorth = document.getElementById('bar-chart-net-worth').getContext('2d');
         var netWorthChart = new Chart(ctxNetWorth, {
             type: 'bar',

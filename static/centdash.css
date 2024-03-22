@@ -186,18 +186,18 @@ h2 {
 }
 
 .bar-chart {
-    width: 300px; /* Adjust the width of the bar chart */
-    height: 200px; /* Adjust the height of the bar chart */
+    width: 300px;
+    height: 200px;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
     margin-top: 20px;
-    position: relative; /* Position bars relative to this container */
+    position: relative; 
 }
 
 .bar {
-    background-color: #007bff; /* Adjust bar color */
-    width: 50px; /* Adjust the width of the bars */
-    position: absolute; /* Position bars absolutely inside the chart */
-    bottom: 0; /* Align bars to the bottom of the chart */
-    left: 20px; /* Adjust spacing between bars */
+    background-color: #007bff;
+    width: 50px;
+    position: absolute; 
+    bottom: 0; 
+    left: 20px;
 }
