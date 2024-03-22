@@ -21,18 +21,12 @@
         <h3>Net Worth</h3>
         <div class="dashboard-content">
         <div class="dashboard-card" id="assets-card">
-        <h3>Assets</h3>
-        <h2>Total Assets:</h2>
         <h3>$0.00</h3>
     </div>
-    <div class="dashboard-card" id="liabiitlies-card">
-        <h3>Liablilites</h3>
-        <h2>Total Liabilities:</h2>
+    <div class="dashboard-card" id="liabilities-card">
         <h3>$0.00</h3>
     </div>
     <div class="dashboard-card" id="net-worth-card">
-        <h3>Net Worth</h3>
-        <h2>Net Worth:</h2>
         <h3>$0.00</h3>
     </div> 
     </div>
@@ -43,13 +37,13 @@
 </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        $(document).ready(function () {
-        function initializeCharts() {
+    $(document).ready(function () {
+    function initializeCharts() {
         // Get initial data for budgets chart
-        var initialData = JSON.parse(localStorage.getItem('calculatedData'));
-        var totalIncome = initialData.totalIncome || 0;
-        var totalExpenses = initialData.totalExpenses || 0;
-        var netIncome = initialData.netTotal || 0;
+        var budgetData = JSON.parse(localStorage.getItem('calculatedData'));
+        var totalIncome = budgetData.totalIncome || 0;
+        var totalExpenses = budgetData.totalExpenses || 0;
+        var netIncome = budgetData.netTotal || 0;
 
         // Create budgets chart
         var ctxBudgets = document.getElementById('bar-chart-budgets').getContext('2d');
@@ -81,49 +75,49 @@
                 }
             }
         });
+
+        // Get initial data for net worth chart
+        var netWorthData = JSON.parse(localStorage.getItem('calculatedNetWorthData'));
+        var totalAssets = netWorthData.totalAssets || 0;
+        var totalLiabilities = netWorthData.totalLiabilities || 0;
+        var netWorth = netWorthData.netWorth || 0;
+
+        // Create net worth chart
+        var ctxNetWorth = document.getElementById('bar-chart-net-worth').getContext('2d');
+        var netWorthChart = new Chart(ctxNetWorth, {
+            type: 'bar',
+            data: {
+                labels: ['Assets', 'Liabilities', 'Net Worth'],
+                datasets: [{
+                    label: 'Amount ($)',
+                    data: [totalAssets, totalLiabilities, netWorth],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     }
     
     initializeCharts();
-    
-            // Get data for net worth chart
-            var assets = parseFloat($('#assets-card h3').text().replace('$', '').trim());
-            var liabilities = parseFloat($('#liabilities-card h3').text().replace('$', '').trim());
-            var netWorth = parseFloat($('#net-worth-card h3').text().replace('$', '').trim());
-    
-            // Create net worth chart
-            var ctxNetWorth = document.getElementById('bar-chart-net-worth').getContext('2d');
-            var netWorthChart = new Chart(ctxNetWorth, {
-                type: 'bar',
-                data: {
-                    labels: ['Assets', 'Liabilities', 'Net Worth'],
-                    datasets: [{
-                        label: 'Amount ($)',
-                        data: [assets, liabilities, netWorth],
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.5)',
-                            'rgba(255, 99, 132, 0.5)',
-                            'rgba(75, 192, 192, 0.5)',
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(75, 192, 192, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
-
+});
         
-    </script>
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

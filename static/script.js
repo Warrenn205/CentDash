@@ -237,6 +237,8 @@ $(document).ready(function() {
 
         var netWorth = totalAssets - totalLiabilities;
 
+        $('#assets-summary').text("Total Assets: $" + totalAssets.toFixed(2));
+        $('#liabilities-summary').text("Total Liabilities: $" + totalLiabilities.toFixed(2));
         $('#networth-summary').text("Net Worth: $" + netWorth.toFixed(2));
 
       
@@ -261,6 +263,7 @@ $(document).ready(function() {
     if (storedAssetLiabilityData) {
         updateUIWithNetWorthData(storedAssetLiabilityData);
         updateStatementsPage(storedAssetLiabilityData);
+        updateDashboardPage(storedAssetLiabilityData);
         calculateNetWorth(storedAssetLiabilityData);
     }
     
@@ -269,6 +272,7 @@ $(document).ready(function() {
         localStorage.setItem('assetLiabilityData', JSON.stringify(assetLiabilityData));
 
         updateStatementsPage(assetLiabilityData);
+        updateDashboardPage(assetLiabilityData);
     }
 
     
@@ -328,6 +332,26 @@ $(document).ready(function() {
 
     }
     
+    function updateDashboardPage(assetLiabilityData) {
+        // Calculate total income
+        var totalAssets = assetLiabilityData.assets.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        $('#assets-card h3').text('Total Assets: $' + totalAssets.toFixed(2));
+    
+        // Calculate total expenses
+        var totalLiabilities = assetLiabilityData.liabilities.reduce(function(total, item) {
+            return total + item.amount;
+        }, 0);
+        $('#liabilities-card h3').text('Total Liabilities: $' + totalLiabilities.toFixed(2));
+    
+        // Calculate net income
+        var netWorth = totalAssets - totalLiabilities;
+        $('#net-worth-card h3').text('Net Worth: $' + netWorth.toFixed(2));
+
+    }
+    
+
     function updateUIWithNetWorthData(data) {
         
         $('.asset-field, .liability-field').remove();
