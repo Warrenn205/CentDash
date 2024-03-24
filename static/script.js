@@ -82,6 +82,7 @@ $(document).ready(function() {
         calculateBudget(storedInputData);
     }
 
+    // Function for getting the budget data.
     function getBudgetData() {
         var incomeData = [];
         var expenseData = [];
@@ -107,6 +108,7 @@ $(document).ready(function() {
         return { income: incomeData, expenses: expenseData };
     }
 
+    // Function for saving the budget data.
     function saveAndRefreshBudgetData() {
         var inputData = getBudgetData();
         localStorage.setItem('inputData', JSON.stringify(inputData));
@@ -115,6 +117,7 @@ $(document).ready(function() {
         updateDashboardPage(inputData);
     }
 
+    // Function for updating the Statements page with data from the Budgets page.
     function updateStatementsPage(inputData) {
         var incomeSummaryHTML = '';
         inputData.income.forEach(function(incomeItem) {
@@ -145,6 +148,7 @@ $(document).ready(function() {
 
     }
 
+    // Function for updating the Dashboard page with data from the Budgets page.
     function updateDashboardPage(inputData) {
         var totalIncome = inputData.income.reduce(function(total, item) {
             return total + item.amount;
@@ -160,7 +164,8 @@ $(document).ready(function() {
         $('#net-income-card h3').text('Net Income: $' + netIncome.toFixed(2));
 
     }
-    
+
+    // Function for updating the UI with Budget data.
     function updateUIWithBudgetData(data) {
         
         $('.income-field, .expense-category').remove();
@@ -183,7 +188,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
       
-    
+    // Function for adding asset input fields so user can enter assets.
     function addAsset() {
         var assetValue = $('.asset-field').length + 1;
         var newAssetValue = $('<div class="asset-field"><input type="text" placeholder="Enter Asset ' + assetValue + '"><input type="number" placeholder="Amount"><button class="delete-asset">Delete</button></div>');
@@ -201,7 +206,7 @@ $(document).ready(function() {
         calculateNetWorth(getAssetLiabilityData()); 
     });
 
-
+    // Function for adding liabililty input fields so user can enter liabilities.
     function addLiability() {
         var liabilityCategory = $('.liability-field').length + 1;
         var newLiabilityCategory = $('<div class="liability-field"><input type="text" placeholder="Enter liability ' + liabilityCategory + '"><input type="number" placeholder="Amount"><button class="delete-liability">Delete</button></div>');
@@ -219,6 +224,7 @@ $(document).ready(function() {
         calculateNetWorth(getAssetLiabilityData()); 
     });
 
+    // Function for calculating the net worth from data inputted from assets and liabilities.
     function calculateNetWorth(assetLiabilityData) {
         var totalAssets = 0;
         var totalLiabilities = 0;
@@ -255,6 +261,7 @@ $(document).ready(function() {
         calculateNetWorth(getAssetLiabilityData());
     });
 
+    // Storing input data from assets and liability fields.
     var storedAssetLiabilityData = JSON.parse(localStorage.getItem('assetLiabilityData')) || { assets: [], liabilities: [] };
     if (storedAssetLiabilityData) {
         updateUIWithNetWorthData(storedAssetLiabilityData);
@@ -271,7 +278,8 @@ $(document).ready(function() {
         updateDashboardPage(assetLiabilityData);
     }
 
-    
+
+    // Function for getting the asset and liabililty data.
     function getAssetLiabilityData() {
         var assetData = [];
         var liabilityData = [];
@@ -297,7 +305,7 @@ $(document).ready(function() {
         return { assets: assetData, liabilities: liabilityData };
     }
 
-
+    // Function for updating the statements page with data from the Net Worth page
     function updateStatementsPage(assetLiabilityData) {
         var assetsSummaryHTML = '';
         assetLiabilityData.assets.forEach(function(assetItem) {
@@ -328,6 +336,7 @@ $(document).ready(function() {
 
     }
     
+    // Function for updating the Dashboard page with data from the Net Worth page.
     function updateDashboardPage(assetLiabilityData) {
         var totalAssets = assetLiabilityData.assets.reduce(function(total, item) {
             return total + item.amount;
@@ -345,6 +354,7 @@ $(document).ready(function() {
     }
     
 
+     // Function for updating the UI with Net Worth data. 
     function updateUIWithNetWorthData(data) {
         
         $('.asset-field, .liability-field').remove();
