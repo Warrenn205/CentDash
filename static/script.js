@@ -1,6 +1,7 @@
 // Budget function for "Budgets" tab
 $(document).ready(function() {
 
+    // Function for adding income input fields so user can enter streams of income.
     function addIncome() {
         var incomeStream = $('.income-field').length + 1;
         var newIncomeStream = $('<div class="income-field"><input type="text" placeholder="Enter Stream of Income ' + incomeStream + '"><input type="number" placeholder="Amount"><button class="delete-income">Delete</button></div>');
@@ -18,6 +19,7 @@ $(document).ready(function() {
         calculateBudget(getBudgetData()); 
     });
 
+    // Function for adding expense input fields so user can enter categories of expenses.
       function addExpense() {
         var expenseCategory = $('.expense-category').length + 1;
         var newExpenseCategory = $('<div class="expense-category"><input type="text" placeholder="Enter expense ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-expense">Delete</button></div>');
@@ -35,6 +37,7 @@ $(document).ready(function() {
         calculateBudget(getBudgetData()); 
     });
 
+    // Function for calculating the budget from data inputted from income and expenses
     function calculateBudget(inputData) {
         var totalIncome = 0;
         var totalExpenses = 0;
@@ -70,6 +73,7 @@ $(document).ready(function() {
         calculateBudget(getBudgetData());
     });
 
+    // Storing input data from income and expenses fields.
     var storedInputData = JSON.parse(localStorage.getItem('inputData')) || { income: [], expenses: [] };
     if (storedInputData) {
         updateUIWithBudgetData(storedInputData);
