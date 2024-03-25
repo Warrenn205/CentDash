@@ -3,7 +3,8 @@ CentDash is a simple personal finance web application that allows users to creat
 
 # Dashboard
 With CentDash users can use the interactive Dashboard in order to visualize their financial activity. With the information from Budgets and Net Worth, the Dashboard automatically updates as the users enter financial informaiton. The Dashboard provides users a graphical representation of their financial data.
-![CentDash Dashboard](https://github.com/Warrenn205/CentDash/assets/122620756/d5f00fa2-87d3-4261-b249-6a3077d98a80)
+![CentDash Dashboard 1](https://github.com/Warrenn205/CentDash/assets/122620756/6ffc1b44-ca37-4b2e-a01e-9a771b6b903f)
+
 
 # Budgets
 Users can create budgets for tracking their income, expenses, and spending. The user can enter all streams of their income along with their monthly expenses and spending. The application will provide their total income, total expenses, and net income.
