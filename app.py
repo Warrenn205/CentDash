@@ -10,11 +10,11 @@ def welcome():
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route('/budgets', methods=['GET', 'POST'])
+@app.route('/budgets')
 def budgets():
         return render_template("budgets.html")
 
-@app.route('/networth', methods=['GET', 'POST'])
+@app.route('/networth')
 def networth():
         return render_template("networth.html")
 
