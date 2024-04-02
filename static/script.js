@@ -245,6 +245,8 @@ $(document).ready(function() {
 
       
         var calculatedNetWorthData = {
+            totalAssets: totalAssets,
+            totalLiabilities: totalLiabilities,
             netWorth: netWorth
         };
         localStorage.setItem('calculatedNetWorthData', JSON.stringify(calculatedNetWorthData));
