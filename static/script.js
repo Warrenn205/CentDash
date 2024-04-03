@@ -8,6 +8,7 @@ $(document).ready(function() {
         $('#income-streams').append(newIncomeStream);
     }
 
+    // Add streams of income
     $('#add-income').on('click', function() {
         addIncome();
         calculateBudget(getBudgetData());
