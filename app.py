@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify, json, g
 import sqlite3 as sql
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -192,9 +194,39 @@ def networth():
 def statements():
     return render_template("statements.html")
 
+
+def scrape_google_news_personal_finance(topic, limit=10):
+    url = f"https://news.google.com/rss/search?q={topic}"
+
+    response = requests.get(url)
+
+    soup = BeautifulSoup(response.content, "xml")
+
+    items = soup.find_all("item")
+
+    personal_finance_news = []
+    for item in items[:limit]:
+        title = item.find("title").text
+        link = item.find("link").text
+        thumbnail_tag = item.find("media:thumbnail")
+        thumbnail = thumbnail_tag["url"] if thumbnail_tag else None
+        print(thumbnail)
+        personal_finance_news.append({"title": title, "link": link, "thumbnail": thumbnail})
+
+    return personal_finance_news
+
+@app.route('/centdashhub')
+def centdash_hub():
+    personal_finance_news = scrape_google_news_personal_finance("personal+finance+articles", limit=10)
+    return render_template("centdashhub.html", personal_finance_news=personal_finance_news)
+
 @app.route('/settings')
 def settings():
     return render_template("settings.html")
+
+@app.route('/help')
+def help():
+    return render_template("help.html")
 
 @app.route('/logout')
 def logout():
