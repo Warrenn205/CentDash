@@ -34,13 +34,12 @@ JavaScript (jQuery) code for Dashboard cards (Net Worth):
 ![CentDash JS Dashboard Code 2](https://github.com/Warrenn205/CentDash/assets/122620756/19ec331c-6a1b-4880-afaa-99c13fecf01b)
 
 CentDash's Dashboard Bar Charts was created utilizing the jsDelivr chart libraries. The following function intializeCharts() was used for the bar charts functionality:
+
 ![CentDash Dashboard code 1](https://github.com/Warrenn205/CentDash/assets/122620756/e367614b-fccb-4b21-a3d1-2b4e105229e9)
+
 ![CentDash Dashboard code 2](https://github.com/Warrenn205/CentDash/assets/122620756/ab514152-0405-4b9d-95bd-e1b7bd40e55b)
+
 ![initializeCharts](https://github.com/Warrenn205/CentDash/assets/122620756/f8062682-54a3-4e4a-80ac-138e43bb8a9c)
-
-
-
-
 
 # Budgets
 Users can create budgets for tracking their income, expenses, and spending. The user can enter all streams of their income along with their monthly expenses and spending. The application will provide their total income, total expenses, and net income.
