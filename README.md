@@ -8,13 +8,32 @@ Upon running the application, you will be directed to a login page. In order to 
 ![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/3f1b2ad4-a84b-4365-aaa2-d2f58df364b1)
 Then you will be taken the sign up page where you can create an account with CentDash.
 ![CentDash Sign Up](https://github.com/Warrenn205/CentDash/assets/122620756/5a1acb74-43d8-45a8-b093-b1a1594f9aed)
-You will then be redirected to the login page, where you must enter your email and password in order to login into the application. Upon logging in you will be directed to a welcome page.
+You will then be redirected back to the login page, where you must enter your email and password in order to login into the application. Upon logging in you will be directed to a welcome page.
 ![CentDash's Welcome](https://github.com/Warrenn205/CentDash/assets/122620756/934557d7-1f1b-4172-ae17-665407bc0904)
 
 CentDash offers the following features:
 # Dashboard
 With CentDash users can use the interactive Dashboard in order to visualize their financial activity. With the information from Budgets and Net Worth, the Dashboard automatically updates as the users enter financial informaiton. The Dashboard provides users a graphical representation of their financial data.
 ![CentDash's Dashboard ](https://github.com/Warrenn205/CentDash/assets/122620756/a1bb4e6a-f91b-4699-b870-9185b82705c7)
+
+CentDash's graphic cards were created using HTML5, CSS, JavaScript's jQuery. The following function updateDashboardPage(), allows for the functionality of updating the Dashboard from information entered from the Budgets
+page:
+HTML5 code:
+![CentDash Cards](https://github.com/Warrenn205/CentDash/assets/122620756/96507228-dfdd-4885-8c40-477ecceff1de)
+
+JavaScript (jQuery) code for Dashboard cards (Budgets):
+![CentDash JS Dashboard Code](https://github.com/Warrenn205/CentDash/assets/122620756/aea1fd68-499a-479d-a56c-c4fa9a13b598)
+
+JavaScript (jQuery) code for Dashboard cards (Net Worth):
+![CentDash JS Dashboard Code 2](https://github.com/Warrenn205/CentDash/assets/122620756/19ec331c-6a1b-4880-afaa-99c13fecf01b)
+
+CentDash's Dashboard Bar Charts was created utilizing the jsDelivr chart libraries. The following function intializeCharts() was used for the bar charts functionality:
+![CentDash Dashboard code 1](https://github.com/Warrenn205/CentDash/assets/122620756/e367614b-fccb-4b21-a3d1-2b4e105229e9)
+![CentDash Dashboard code 2](https://github.com/Warrenn205/CentDash/assets/122620756/ab514152-0405-4b9d-95bd-e1b7bd40e55b)
+![initializeCharts](https://github.com/Warrenn205/CentDash/assets/122620756/f8062682-54a3-4e4a-80ac-138e43bb8a9c)
+
+
+
 
 
 # Budgets
