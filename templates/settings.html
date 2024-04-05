@@ -1,7 +1,13 @@
-{%extends "centdashpage.html" %} 
-{%block content%} 
+{% extends "centdashpage.html" %} 
+{% block content %} 
 <div class="container">
     <h1>Settings</h1>
+    <hr>
     <div id="settings-section">
-
+        <form method="post" action="/delete_account">
+            <p>Delete Account? <button type="submit">Click Here</button></p>
+        </form>
+        <p>Please note that once an account is deleted it is permanently erased from the database. In order to use CentDash again you will have to sign up again.</p>
+    </div>
+</div>
 {% endblock %}
