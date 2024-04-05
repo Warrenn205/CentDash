@@ -18,13 +18,19 @@ With CentDash users can use the interactive Dashboard in order to visualize thei
 
 CentDash's graphic cards were created using HTML5, CSS, JavaScript's jQuery. The following function updateDashboardPage(), allows for the functionality of updating the Dashboard from information entered from the Budgets
 page:
+
 HTML5 code:
+
 ![CentDash Cards](https://github.com/Warrenn205/CentDash/assets/122620756/96507228-dfdd-4885-8c40-477ecceff1de)
 
 JavaScript (jQuery) code for Dashboard cards (Budgets):
+
+
 ![CentDash JS Dashboard Code](https://github.com/Warrenn205/CentDash/assets/122620756/aea1fd68-499a-479d-a56c-c4fa9a13b598)
 
 JavaScript (jQuery) code for Dashboard cards (Net Worth):
+
+
 ![CentDash JS Dashboard Code 2](https://github.com/Warrenn205/CentDash/assets/122620756/19ec331c-6a1b-4880-afaa-99c13fecf01b)
 
 CentDash's Dashboard Bar Charts was created utilizing the jsDelivr chart libraries. The following function intializeCharts() was used for the bar charts functionality:
