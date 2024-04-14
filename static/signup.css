@@ -73,6 +73,10 @@ input[type="email"] {
     box-sizing: border-box;
   }
 
+  input[type="submit"]:hover {
+    background-color: #0f4498e5;
+  }
+
   p {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
