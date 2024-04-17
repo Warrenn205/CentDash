@@ -376,10 +376,12 @@ $(document).ready(function() {
     }
 });
 
+// Goals function for "Goals" tab.
+
 $(document).ready(function() {
     var goalCount = 0;
 
-    // Function to add a goal to the list
+    // Function to add goals to a list that will display on the page.
     function addGoalToList(goalText) {
         goalCount++;
         var listItem = $('<li>').addClass('goal-item');
@@ -388,13 +390,13 @@ $(document).ready(function() {
         var deleteButton = $('<button>').addClass('delete-goal').text('x');
         deleteButton.click(function() {
             listItem.remove();
-            updateGoalNumbers(); // Update goal numbers after deletion
+            updateGoalNumbers(); 
         });
         listItem.append(goalNumber, goalTextSpan, deleteButton);
         $('#goal-list').append(listItem);
     }
 
-    // Function to update goal numbers after deletion
+    // Function to update the numbering of the list of goals.
     function updateGoalNumbers() {
         $('.goal-item').each(function(index) {
             $(this).find('.goal-number').text((index + 1) + ". ");
@@ -402,18 +404,17 @@ $(document).ready(function() {
         goalCount = $('.goal-item').length;
     }
 
-    // Add goal when the "Add" button is clicked
+    // Function to add goals to the list when a user clicks the "Add" button.
     $('#add-goal-btn').click(function() {
         var goalText = $('#goal-input').val().trim();
         if (goalText !== '') {
             addGoalToList(goalText);
-            $('#goal-input').val(''); // Clear the input field
+            $('#goal-input').val(''); 
         }
     });
 
-    // Add goal when Enter key is pressed
     $('#goal-input').keypress(function(event) {
-        if (event.which === 13) { // Enter key
+        if (event.which === 13) { 
             $('#add-goal-btn').click();
         }
     });

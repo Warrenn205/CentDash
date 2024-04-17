@@ -6,9 +6,11 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+# Database handling with SQLite.
 DATABASE_NAME = "database.db"
 app.secret_key = "ART56HBCXTY-I876T-098NU"
 
+# Secret key for CentDash's database.
 app.config['JWT_SECRET_KEY'] = 'ART56HBCXTY-I876T-098NU' 
 jwt = JWTManager(app)
 
@@ -42,6 +44,8 @@ def create_connection():
 connection = sql.connect(DATABASE_NAME)
 cursor = connection.cursor()
 
+# SQL Queries for the registration and login information for CentDash users.
+# SQL Query for signing up.
 cursor.execute('''CREATE TABLE IF NOT EXISTS user (
                     firstName TEXT NOT NULL,
                     lastName TEXT NOT NULL,
@@ -49,11 +53,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS user (
                     password TEXT NOT NULL
                 )''')
 
+# SQL Query for budgets page.
 cursor.execute('''CREATE TABLE IF NOT EXISTS budget (
                     user_id TEXT PRIMARY KEY NOT NULL,
                     data TEXT
                 )''')
 
+# SQL Query for net worth page.
 cursor.execute('''CREATE TABLE IF NOT EXISTS net_worth (
                     user_id TEXT PRIMARY KEY NOT NULL,
                     data TEXT
@@ -62,6 +68,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS net_worth (
 connection.commit()
 connection.close()
 
+# Route and function for logging into CentDash.
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
@@ -80,6 +87,7 @@ def login():
     else:
         return render_template("signin.html", errorMsg="")
 
+# Route and function for signing up for CentDash.
 @app.route('/signup', methods=["POST", "GET"])
 def signup():
     if request.method == "POST":
@@ -107,11 +115,6 @@ def signup():
     else:
         return render_template("signup.html")
 
-
-@app.route('/forgot')
-def forgot_password():
-    return render_template("forgotpassword.html")
-
 @app.route('/welcome')
 def welcome():
     if "user" in session:
@@ -124,6 +127,7 @@ def welcome():
 def dashboard():
     return render_template("dashboard.html")
 
+# Budgets route and function that allows users to budget their personal finances. The function allows inputted information to be saved into the database.
 @app.route('/budgets', methods=['GET', 'POST'])
 def budgets():
     if request.method == 'POST':
