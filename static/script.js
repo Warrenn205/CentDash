@@ -375,3 +375,48 @@ $(document).ready(function() {
         });
     }
 });
+
+$(document).ready(function() {
+    var goalCount = 0;
+
+    // Function to add a goal to the list
+    function addGoalToList(goalText) {
+        goalCount++;
+        var listItem = $('<li>').addClass('goal-item');
+        var goalNumber = $('<span>').addClass('goal-number').text(goalCount + ". ");
+        var goalTextSpan = $('<span>').addClass('goal-text').text(goalText);
+        var deleteButton = $('<button>').addClass('delete-goal').text('x');
+        deleteButton.click(function() {
+            listItem.remove();
+            updateGoalNumbers(); // Update goal numbers after deletion
+        });
+        listItem.append(goalNumber, goalTextSpan, deleteButton);
+        $('#goal-list').append(listItem);
+    }
+
+    // Function to update goal numbers after deletion
+    function updateGoalNumbers() {
+        $('.goal-item').each(function(index) {
+            $(this).find('.goal-number').text((index + 1) + ". ");
+        });
+        goalCount = $('.goal-item').length;
+    }
+
+    // Add goal when the "Add" button is clicked
+    $('#add-goal-btn').click(function() {
+        var goalText = $('#goal-input').val().trim();
+        if (goalText !== '') {
+            addGoalToList(goalText);
+            $('#goal-input').val(''); // Clear the input field
+        }
+    });
+
+    // Add goal when Enter key is pressed
+    $('#goal-input').keypress(function(event) {
+        if (event.which === 13) { // Enter key
+            $('#add-goal-btn').click();
+        }
+    });
+});
+
+

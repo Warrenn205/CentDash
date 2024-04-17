@@ -1,0 +1,19 @@
+{% extends "centdashpage.html" %} 
+{% block content %}
+<div class="container">
+    <h1>Goals</h1>
+    <div id="goals-section">
+        <h2>Goals</h2>
+        <div class="goals-field">
+            <input id="goal-input" type="text" placeholder="Enter Goal">
+            <button id="add-goal-btn">Add</button>
+            <hr>
+        </div>
+        <ul id="goal-list"></ul>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
+{% endblock %}

@@ -174,6 +174,10 @@ def networth():
             else:
                 networth_data = "{}" 
         return render_template("networth.html", networth_data=networth_data)
+    
+@app.route('/goals')
+def goals():
+    return render_template("goals.html")
 
 
 @app.route('/statements')
