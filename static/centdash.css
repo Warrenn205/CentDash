@@ -137,6 +137,7 @@ h2 {
     background-color: rgba(32, 162, 214, 0.96);
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     padding: 12px 20px;
     margin-bottom: 10px;
