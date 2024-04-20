@@ -87,7 +87,7 @@ def login():
     else:
         return render_template("signin.html", errorMsg="")
 
-# Route and function for signing up for CentDash.
+# Route and function for signing up for CentDash The function uses SQL queries to store data in database.
 @app.route('/signup', methods=["POST", "GET"])
 def signup():
     if request.method == "POST":
