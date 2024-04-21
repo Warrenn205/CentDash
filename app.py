@@ -131,7 +131,7 @@ def dashboard():
 # Budgets function that allows users to budget their personal finances. The function allows inputted information to be saved into the database.
 @app.route('/budgets', methods=['GET', 'POST'])
 def budgets():
-    if request.method == 'POST':
+    if request.method == 'POST': # POST method for user data on the Budgets page.
         user_email = session.get('user')
         data = request.json.get('data')
 
@@ -144,7 +144,7 @@ def budgets():
             cursor.execute('''UPDATE budget SET data = ? WHERE user_id = ?''', (json_data, user_email))
             db.commit()
         return jsonify({'message': 'Data from Budgets saved successfully!'}), 200
-    elif request.method == 'GET':
+    elif request.method == 'GET': # GET method for user data on the Budgets page.
         user_email = session.get('user')
         with get_db() as db:
             cursor = db.cursor()
