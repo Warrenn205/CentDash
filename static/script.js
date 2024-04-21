@@ -1,22 +1,22 @@
-// Budget function for "Budgets" tab
+// jQuery Budget function for "Budgets" tab
 $(document).ready(function() {
 
     // Function for adding income input fields so user can enter streams of income.
     function addIncome() {
         var incomeStream = $('.income-field').length + 1; // Variable that allows users to add as many income input fields infinitely.
         var newIncomeStream = $('<div class="income-field"><input type="text" placeholder="Enter Stream of Income ' + incomeStream + '"><input type="number" placeholder="Amount"><button class="delete-income">Delete</button></div>');
-        $('#income-streams').append(newIncomeStream);
+        $('#income-streams').append(newIncomeStream); // Appends income input data to variable.
     }
 
     // Add streams of income
-    $('#add-income').on('click', function() {
+    $('#add-income').on('click', function() { // Adds income input fields.
         addIncome();
         calculateBudget(getBudgetData()); // Calculates Budget data that the user inputs.
     });
 
-    $(document).on('click', '.delete-income', function() {
+    $(document).on('click', '.delete-income', function() { // Deletes income input fields.
         $(this).closest('.income-field').remove();
-        saveAndRefreshBudgetData();
+        saveAndRefreshBudgetData(); // Saves income data if page is refreshed or if user clicks on another page or logs out.
         calculateBudget(getBudgetData()); 
     });
 
@@ -24,17 +24,17 @@ $(document).ready(function() {
       function addExpense() {
         var expenseCategory = $('.expense-category').length + 1; // Variable that allows users to add as many expense input fields infinitely.
         var newExpenseCategory = $('<div class="expense-category"><input type="text" placeholder="Enter expense ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-expense">Delete</button></div>');
-        $('#expense-fields').append(newExpenseCategory);
+        $('#expense-fields').append(newExpenseCategory); // Appends expense input data to variable.
     }
 
      $('#add-expense').on('click', function() {
         addExpense();
-        calculateBudget(getBudgetData()); 
+        calculateBudget(getBudgetData()); // Calculates Expense data that the user inputs.
     });
 
     $(document).on('click', '.delete-expense', function() {
         $(this).closest('.expense-category').remove();
-        saveAndRefreshBudgetData();
+        saveAndRefreshBudgetData(); // Saves expense data if page is refreshed or if user clicks on another page or logs out.
         calculateBudget(getBudgetData()); 
     });
 
@@ -144,7 +144,7 @@ $(document).ready(function() {
 
         $('#total-expenses').text('Total Expenses: $' + totalExpenses.toFixed(2));
 
-        var netIncome = totalIncome - totalExpenses;
+        var netIncome = totalIncome - totalExpenses; // (Net Income = TotalIncome - Total Expenses)
         $('#net-income').text('Net Income: $' + netIncome.toFixed(2));
 
     }
@@ -185,7 +185,7 @@ $(document).ready(function() {
     }
 });
 
-// Net Worth function for "Net Worth" tab
+// jQuery Net Worth function for "Net Worth" tab
 
 $(document).ready(function() {
       
@@ -196,12 +196,12 @@ $(document).ready(function() {
         $('#assets').append(newAssetValue);
     }
 
-    $('#add-asset').on('click', function() {
+    $('#add-asset').on('click', function() { // Adds asset input fields.
         addAsset();
         calculateNetWorth(getAssetLiabilityData());
     });
 
-    $(document).on('click', '.delete-asset', function() {
+    $(document).on('click', '.delete-asset', function() { // Deletes asset input fields.
         $(this).closest('.asset-field').remove();
         saveAndRefreshNetWorthData();
         calculateNetWorth(getAssetLiabilityData()); 
@@ -238,7 +238,7 @@ $(document).ready(function() {
             totalLiabilities += liabilitiesItem.amount;
         });
 
-        var netWorth = totalAssets - totalLiabilities;
+        var netWorth = totalAssets - totalLiabilities; // (Net Worth = Total Assets - Total Liablilities)
 
         $('#assets-summary').text("Total Assets: $" + totalAssets.toFixed(2));
         $('#liabilities-summary').text("Total Liabilities: $" + totalLiabilities.toFixed(2));
@@ -376,15 +376,15 @@ $(document).ready(function() {
     }
 });
 
-// Goals function for "Goals" tab.
+// jQuery Goals function for "Goals" tab.
 
 $(document).ready(function() {
     var goalCount = 0;
 
     // Function to add goals to a list that will display on the page.
     function addGoalToList(goalText) {
-        goalCount++;
-        var listItem = $('<li>').addClass('goal-item');
+        goalCount++; // Incrementing how many goals that can listed.
+        var listItem = $('<li>').addClass('goal-item'); // Variable for listing all the items for goals.
         var goalNumber = $('<span>').addClass('goal-number').text(goalCount + ". ");
         var goalTextSpan = $('<span>').addClass('goal-text').text(goalText);
         var deleteButton = $('<button>').addClass('delete-goal').text('x');
