@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 # Database handling with SQLite.
 DATABASE_NAME = "database.db"
-app.secret_key = "ART56HBCXTY-I876T-098NU"
+app.secret_key = "ART56HBCXTY-I876T-098NU" # Secret Key for CentDash's database.
 
-# Secret key for CentDash's database.
+# Configuring the app using JWTManager.
 app.config['JWT_SECRET_KEY'] = 'ART56HBCXTY-I876T-098NU' 
 jwt = JWTManager(app)
 
@@ -26,6 +26,7 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+# Authentication token for email and password login.
 @app.route('/get_auth_token', methods=['POST'])
 def get_auth_token():
     email = request.form.get('email')
@@ -127,7 +128,7 @@ def welcome():
 def dashboard():
     return render_template("dashboard.html")
 
-# Budgets route and function that allows users to budget their personal finances. The function allows inputted information to be saved into the database.
+# Budgets function that allows users to budget their personal finances. The function allows inputted information to be saved into the database.
 @app.route('/budgets', methods=['GET', 'POST'])
 def budgets():
     if request.method == 'POST':
@@ -156,7 +157,9 @@ def budgets():
         return render_template("budgets.html", budgets_data=budgets_data)
     else:
         return jsonify({'error': 'Method not allowed'}), 405
+    
 
+# Net Worth function that allows users to budget their personal finances. The function allows inputted information to be saved into the database.
 @app.route('/networth', methods=['GET', 'POST'])
 def networth():
     if request.method == 'POST':
@@ -188,9 +191,9 @@ def goals():
 def statements():
     return render_template("statements.html")
 
-
+# Function for utilizing BeautifulSoups's web scraping library for CentDash Hub.
 def scrape_google_news_personal_finance(topic, limit=10):
-    url = f"https://news.google.com/rss/search?q={topic}"
+    url = f"https://news.google.com/rss/search?q={topic}" # Gathers personal finance articles from Google News.
 
     response = requests.get(url)
 
@@ -209,6 +212,7 @@ def scrape_google_news_personal_finance(topic, limit=10):
 
     return personal_finance_news
 
+# CentDash Hub function that web scrapes personal finance articles from Google News.
 @app.route('/centdashhub')
 def centdash_hub():
     personal_finance_news = scrape_google_news_personal_finance("personal+finance+articles", limit=10)
@@ -222,6 +226,7 @@ def settings():
 def help():
     return render_template("help.html")
 
+# Function that allows users to delete their account and information from CentDash.
 @app.route('/delete_account', methods=['GET', 'POST'])
 def delete_account():
     if request.method == 'POST':

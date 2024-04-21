@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     // Function for adding income input fields so user can enter streams of income.
     function addIncome() {
-        var incomeStream = $('.income-field').length + 1;
+        var incomeStream = $('.income-field').length + 1; // Variable that allows users to add as many income input fields infinitely.
         var newIncomeStream = $('<div class="income-field"><input type="text" placeholder="Enter Stream of Income ' + incomeStream + '"><input type="number" placeholder="Amount"><button class="delete-income">Delete</button></div>');
         $('#income-streams').append(newIncomeStream);
     }
@@ -11,7 +11,7 @@ $(document).ready(function() {
     // Add streams of income
     $('#add-income').on('click', function() {
         addIncome();
-        calculateBudget(getBudgetData());
+        calculateBudget(getBudgetData()); // Calculates Budget data that the user inputs.
     });
 
     $(document).on('click', '.delete-income', function() {
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     // Function for adding expense input fields so user can enter categories of expenses.
       function addExpense() {
-        var expenseCategory = $('.expense-category').length + 1;
+        var expenseCategory = $('.expense-category').length + 1; // Variable that allows users to add as many expense input fields infinitely.
         var newExpenseCategory = $('<div class="expense-category"><input type="text" placeholder="Enter expense ' + expenseCategory + '"><input type="number" placeholder="Amount"><button class="delete-expense">Delete</button></div>');
         $('#expense-fields').append(newExpenseCategory);
     }
@@ -191,7 +191,7 @@ $(document).ready(function() {
       
     // Function for adding asset input fields so user can enter assets.
     function addAsset() {
-        var assetValue = $('.asset-field').length + 1;
+        var assetValue = $('.asset-field').length + 1; // Variable that allows users to add as many asset input fields infinitely.
         var newAssetValue = $('<div class="asset-field"><input type="text" placeholder="Enter Asset ' + assetValue + '"><input type="number" placeholder="Amount"><button class="delete-asset">Delete</button></div>');
         $('#assets').append(newAssetValue);
     }
