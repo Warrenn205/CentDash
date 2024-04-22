@@ -225,3 +225,29 @@ h2 {
 .goal-number {
     margin-right: 5px;
 }
+
+.income-total {
+    font-weight: bold;
+  }
+  
+  .expense-total {
+    font-weight: bold;
+  }
+  
+  .net-income-total {
+    font-weight: bold;
+  }
+  
+  .assets-total {
+    font-weight: bold;
+  }
+  
+  .liabilities-total {
+    font-weight: bold;
+  }
+  
+  .net-worth-total {
+    font-weight: bold;
+  }
+  
+  
