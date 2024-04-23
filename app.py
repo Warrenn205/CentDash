@@ -182,9 +182,9 @@ def networth():
                 networth_data = "{}" 
         return render_template("networth.html", networth_data=networth_data)
     
-@app.route('/goals')
-def goals():
-    return render_template("goals.html")
+@app.route('/calculator')
+def calculator():
+    return render_template("calculator.html")
 
 
 @app.route('/statements')

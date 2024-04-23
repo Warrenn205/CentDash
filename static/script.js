@@ -376,48 +376,32 @@ $(document).ready(function() {
     }
 });
 
-// jQuery Goals function for "Goals" tab.
+// jQuery Calculator function for "Calculator" tab
 
 $(document).ready(function() {
-    var goalCount = 0;
+    $("#calculate-paycheck").click(function() {
+        // Variables for Salary, Income Tax Rate, Days worked, and Hours Worked.
 
-    // Function to add goals to a list that will display on the page.
-    function addGoalToList(goalText) {
-        goalCount++; // Incrementing how many goals that can listed.
-        var listItem = $('<li>').addClass('goal-item'); // Variable for listing all the items for goals.
-        var goalNumber = $('<span>').addClass('goal-number').text(goalCount + ". ");
-        var goalTextSpan = $('<span>').addClass('goal-text').text(goalText);
-        var deleteButton = $('<button>').addClass('delete-goal').text('x');
-        deleteButton.click(function() {
-            listItem.remove();
-            updateGoalNumbers(); 
-        });
-        listItem.append(goalNumber, goalTextSpan, deleteButton);
-        $('#goal-list').append(listItem);
-    }
+        var salary = parseFloat($("#salary input").val());
+        var incomeTaxRate = parseFloat($("#income-tax input").val());
+        var daysPerWeek = parseInt($("#days-per-week").val());
+        var hoursPerDay = parseInt($("#hours-per-day").val());
 
-    // Function to update the numbering of the list of goals.
-    function updateGoalNumbers() {
-        $('.goal-item').each(function(index) {
-            $(this).find('.goal-number').text((index + 1) + ". ");
-        });
-        goalCount = $('.goal-item').length;
-    }
+        var annualPay = salary;
+        var monthlyPay = salary / 12;
+        var weeklyPay = salary / (52 / (daysPerWeek / 7));
+        var dailyPay = salary / (260 / daysPerWeek); 
+        var hourlyPay = salary / (260 * hoursPerDay); 
 
-    // Function to add goals to the list when a user clicks the "Add" button.
-    $('#add-goal-btn').click(function() {
-        var goalText = $('#goal-input').val().trim();
-        if (goalText !== '') {
-            addGoalToList(goalText);
-            $('#goal-input').val(''); 
-        }
-    });
+        var totalIncomeTax = (salary * incomeTaxRate) / 100;
+        var annualNetIncome = salary - totalIncomeTax;
 
-    $('#goal-input').keypress(function(event) {
-        if (event.which === 13) { 
-            $('#add-goal-btn').click();
-        }
+        $("#paycheck-summary #annual").text("Annual: $" + annualPay.toFixed(2));
+        $("#paycheck-summary #monthly").text("Monthly: $" + monthlyPay.toFixed(2));
+        $("#paycheck-summary #weekly").text("Weekly: $" + weeklyPay.toFixed(2));
+        $("#paycheck-summary #daily").text("Daily: $" + dailyPay.toFixed(2));
+        $("#paycheck-summary #hourly").text("Hourly: $" + hourlyPay.toFixed(2));
+        $("#paycheck-summary #total-income-tax").text("Total Income Tax: $" + totalIncomeTax.toFixed(2));
+        $("#paycheck-summary #annual-net-income").text("Annual Net Income: $" + annualNetIncome.toFixed(2));
     });
 });
-
-

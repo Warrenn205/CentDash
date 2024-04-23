@@ -1,0 +1,42 @@
+{% extends "centdashpage.html" %} 
+{% block content %}
+<div class="container">
+    <h1>Calculator</h1>
+    <div id="goals-section">
+        <h2>Salary</h2>
+        <div id="salary">
+            <div class="salary-field">
+                <input type="number" placeholder="Enter Salary">
+              </div>
+              <h2>Income Tax Rate</h2>
+              <div id="income-tax">
+                <div class="income-tax-field">
+                    <input type="number" placeholder="Enter Income Tax Rate">
+                </div>
+                <h2>Working Days</h2>
+                <div id="working-days">
+                    <input type="number" id="days-per-week" placeholder="Enter Working Days per Week">
+                </div>
+                <h2>Working Hours</h2>
+                <div id="working-hours">
+                    <input type="number" id="hours-per-day" placeholder="Enter Working Hours per Day">
+                </div>
+                <button id="calculate-paycheck">Calculate</button>
+              </div>
+              <div id="paycheck-summary">
+                <div id="annual">Annual: $0.00</div>
+                <div id="monthly">Monthly: $0.00</div>
+                <div id="weekly">Weekly: $0.00</div>
+                <div id="daily">Daily: $0.00</div>
+                <div id="hourly">Hourly: $0.00</div>
+                <div id="total-income-tax">Total Income Tax: $0.00</div>
+                <div id="annual-net-income">Annual Net Income: $0.00</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
+{% endblock %}
