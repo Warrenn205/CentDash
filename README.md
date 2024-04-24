@@ -1,8 +1,6 @@
 ![CentDash](https://github.com/Warrenn205/CentDash/assets/122620756/305d649d-3f4f-4c37-a987-9a01fe57a312)
 CentDash is a personal finance application that allows users to create budgets, calculate their net worth, and engage with finanical statements and reports.
 
-In order to use CentDash you must create an account with the application.
-
 # Creating an account with CentDash
 Upon running the application, you will be directed to a login page. In order to use CentDash, you must create an account by signing up by clicking the "Sign Up" button.
 ![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/3f1b2ad4-a84b-4365-aaa2-d2f58df364b1)
