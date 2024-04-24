@@ -16,8 +16,7 @@ With CentDash users can use the interactive Dashboard in order to visualize thei
 
 # Budgets
 Users can create budgets for tracking their income, expenses, and spending. The user can enter all streams of their income along with their monthly expenses and spending. The application will provide their total income, total expenses, and net income.
-![CentDash Budgets](https://github.com/Warrenn205/CentDash/assets/122620756/bc838fd0-e2f7-4dbe-a362-0c0d0a1fa38e)
-
+![CentDash Budgets](https://github.com/Warrenn205/CentDash/assets/122620756/939fb775-081d-414e-b849-7abb92193f3e)
 
 # Net Worth
 CentDash also allows users can calculate their net worth with the application by entering their assets and liabilities.The application will provide their total assets, total liabilities, and net worth.
