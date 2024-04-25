@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CentDash</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='layout.css')}}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="centdash">
+        <a href="#"><img src="{{url_for('static', filename='CentDash.png')}}"  class="logo" width="200" height="65"></a>
+        <nav class="links">
+            <a href="/signin">Sign In</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+        <div class="navigation">
+        </div>
+    </header>
+    <main class="main-content">
+        <h2>Monitor your financial activity<br><span>With CentDash!</span></h2>
+        <div class="image-container">
+            <img src="static/CentDash Dashboard.png" alt="CentDash Dashboard" width="950" height="450">
+        </div>
+        <div class="text-container">
+            <p>
+                <br>
+                <br>
+                CentDash is a personal finance application that allows users to create budgets, calculate their net worth, and engage them 
+                with finanical reporting.
+                <br>
+                <br>
+                <br>
+                With CentDash, you can track your expenses, manage your budget, and stay on top of your finances effortlessly.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

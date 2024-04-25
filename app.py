@@ -69,8 +69,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS net_worth (
 connection.commit()
 connection.close()
 
+# Landing page
+@app.route('/')
+def centdash():
+    return render_template("centdash.html")
+
 # Route and function for logging into CentDash.
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/signin', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         email = request.form["Email"]
@@ -237,16 +242,16 @@ def delete_account():
                 cursor.execute('UPDATE user SET email = NULL WHERE email = ?', (user_email,))
                 db.commit()
             session.clear()
-            return redirect(url_for('login'))
+            return redirect(url_for('centdash'))
         else:
-            return redirect(url_for('login'))
+            return redirect(url_for('centdash'))
     else:
         return render_template("settings.html")
     
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('centdash'))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)
