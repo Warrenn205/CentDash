@@ -9,3 +9,11 @@ CentDash is a personal finance application that allows users to create budgets, 
 - **jQuery** to simplify HTML document transversing and handling.
 - **AJAX** to update interactive web page components seamlessly.
 
+# Welcome Page
+Upon running the application, users will enter the welcome page that will give them the options to sign up or sign into the application.
+![CentDash Main Page](https://github.com/Warrenn205/CentDash/assets/122620756/33182873-be88-419b-ba42-7740e6832fd3)
+
+# Sign Up and Sign In
+In order to use CentDash, users must sign up for the application. After signing up the user will be able to sign into CentDash.
+![CentDash Sign Up](https://github.com/Warrenn205/CentDash/assets/122620756/c6c422a1-fedb-4010-bb02-299e5da399a5)
+![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/b4ffe8af-e969-4f81-9112-6d60fbca7e3c)
