@@ -4,7 +4,7 @@ CentDash is a personal finance application that allows users to create budgets, 
 **Tools used:**
 - **Python Flask** for creating the backend for the application.
 - **SQLite** for database handling and the storage and security of users' information.
-- **HTML/CSS** for creating and styling of webpages.
+- **HTML/CSS** for creating and styling webpages.
 - **JavaScript** to integrate calculation functionality and interactive elements.
 - **jQuery** to simplify HTML document transversing and handling.
 - **AJAX** to update interactive web page components seamlessly.
@@ -17,3 +17,7 @@ Upon running the application, users will enter the welcome page that will give t
 In order to use CentDash, users must sign up for the application. After signing up the user will be able to sign into CentDash.
 ![CentDash Sign Up](https://github.com/Warrenn205/CentDash/assets/122620756/c6c422a1-fedb-4010-bb02-299e5da399a5)
 ![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/b4ffe8af-e969-4f81-9112-6d60fbca7e3c)
+
+# Dashboard
+With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards that allows them to stay updated with their spending and expenses. 
+![CentDash Dashboard](https://github.com/Warrenn205/CentDash/assets/122620756/dd79a9f7-fc68-41b6-afda-02951e25faeb)
