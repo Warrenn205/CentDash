@@ -21,3 +21,7 @@ In order to use CentDash, users must sign up for the application. After signing 
 # Dashboard
 With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards that allows them to stay updated with their spending and expenses. 
 ![CentDash Dashboard](https://github.com/Warrenn205/CentDash/assets/122620756/dd79a9f7-fc68-41b6-afda-02951e25faeb)
+
+# Budgets
+Budgets allows users to create budgets and to track their expenses as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
+![CentDash Budgets](https://github.com/Warrenn205/CentDash/assets/122620756/01c9e537-008d-49d6-8f56-11ef60b11431)
