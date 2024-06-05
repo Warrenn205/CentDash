@@ -40,3 +40,4 @@ CentDash allows users to engage with financial reporting with the interactive St
 
 # CentDash Hub
 CentDash Hub allows users to stay up to date with financial news and trends in order to increase financial literacy and awareness. Users can engage with a variety of personal finance articles online with this feature.
+![CentDash Hub](https://github.com/Warrenn205/CentDash/assets/122620756/8be8d83b-9694-4651-8b50-cbb445b792b9)
