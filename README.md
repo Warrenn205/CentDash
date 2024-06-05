@@ -19,9 +19,24 @@ In order to use CentDash, users must sign up for the application. After signing 
 ![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/b4ffe8af-e969-4f81-9112-6d60fbca7e3c)
 
 # Dashboard
-With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards that allows them to stay updated with their spending and expenses. 
+With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards that allows them to stay updated with their spending and expenses (Sample data shown). 
 ![CentDash Dashboard](https://github.com/Warrenn205/CentDash/assets/122620756/dd79a9f7-fc68-41b6-afda-02951e25faeb)
 
 # Budgets
-Budgets allows users to create budgets and to track their expenses as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
+Budgets allows users to create budgets and to track their expenses as well. Users can enter the category of their income and expenses and enter the amounts as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
 ![CentDash Budgets](https://github.com/Warrenn205/CentDash/assets/122620756/01c9e537-008d-49d6-8f56-11ef60b11431)
+
+# Net Worth
+With Net Worth, users can calculate their net worth by adding their assets and liabilities.
+![CentDash Net Worth](https://github.com/Warrenn205/CentDash/assets/122620756/7fbc7771-3513-4907-a17f-3cde8b761bb0)
+
+# Calculator
+Users can calculate their total salary with the Calculator feature.
+![CentDash Calculator](https://github.com/Warrenn205/CentDash/assets/122620756/5977c4a2-e528-4408-b722-070c80854870)
+
+# Statements
+CentDash allows users to engage with financial reporting with the interactive Statements feature. With Statements, users can stay up to date with their total and net income and track the type of expenses they have (Sample data shown).
+![CentDash's Statements Page](https://github.com/Warrenn205/CentDash/assets/122620756/08071893-b0dc-4df2-a774-53f8a9066ea5)
+
+# CentDash Hub
+CentDash Hub allows users to stay up to date with financial news and trends in order to increase financial literacy and awareness. Users can engage with a variety of personal finance articles online with this feature.
