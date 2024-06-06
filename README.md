@@ -36,7 +36,7 @@ Users can calculate their total salary with the Calculator feature.
 
 # Statements
 CentDash allows users to engage with financial reporting with the interactive Statements feature. With Statements, users can stay up to date with their total and net income and track the type of expenses they have (Sample data shown).
-![CentDash's Statements Page](https://github.com/Warrenn205/CentDash/assets/122620756/08071893-b0dc-4df2-a774-53f8a9066ea5)
+![CentDash Statements](https://github.com/Warrenn205/CentDash/assets/122620756/628ebf52-dc78-4d6b-97b1-5fe6992920ec)
 
 # CentDash Hub
 CentDash Hub allows users to stay up to date with financial news and trends in order to increase financial literacy and awareness. Users can engage with a variety of personal finance articles online with this feature.
