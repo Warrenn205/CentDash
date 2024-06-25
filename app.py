@@ -196,33 +196,6 @@ def calculator():
 def statements():
     return render_template("statements.html")
 
-# Function for utilizing BeautifulSoups's web scraping library for CentDash Hub.
-def scrape_google_news_personal_finance(topic, limit=10):
-    url = f"https://news.google.com/rss/search?q={topic}" # Gathers personal finance articles from Google News.
-
-    response = requests.get(url)
-
-    soup = BeautifulSoup(response.content, "xml")
-
-    items = soup.find_all("item")
-
-    personal_finance_news = []
-    for item in items[:limit]:
-        title = item.find("title").text
-        link = item.find("link").text
-        thumbnail_tag = item.find("media:thumbnail")
-        thumbnail = thumbnail_tag["url"] if thumbnail_tag else None
-        print(thumbnail)
-        personal_finance_news.append({"title": title, "link": link, "thumbnail": thumbnail})
-
-    return personal_finance_news
-
-# CentDash Hub function that web scrapes personal finance articles from Google News.
-@app.route('/centdashhub')
-def centdash_hub():
-    personal_finance_news = scrape_google_news_personal_finance("personal+finance+articles", limit=10)
-    return render_template("centdashhub.html", personal_finance_news=personal_finance_news)
-
 @app.route('/settings')
 def settings():
     return render_template("settings.html")
