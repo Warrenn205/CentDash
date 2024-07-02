@@ -1,5 +1,5 @@
 ![CentDash](https://github.com/Warrenn205/CentDash/assets/122620756/305d649d-3f4f-4c37-a987-9a01fe57a312)
-CentDash is a personal finance application that allows users to create budgets, track their expenses, and engage them with finanical reporting. With CentDash, users can monitor their spending and expenses, and also visualize their data in a interactive platform that allows them to manage their overall personal finances.
+CentDash is a personal finance application that allows users to create budgets, track their expenses, and engage them with financial reporting. With CentDash, users can monitor their spending and expenses, and also visualize their data in an interactive platform that allows them to manage their overall personal finances.
 
 **Tools used:**
 - **Python Flask** for creating the backend for the application.
@@ -10,30 +10,30 @@ CentDash is a personal finance application that allows users to create budgets, 
 - **AJAX** to update interactive web page components seamlessly.
 
 # Welcome Page
-Upon running the application, users will enter the welcome page that will give them the options to sign up or sign into the application.
-![CentDash Main Page](https://github.com/Warrenn205/CentDash/assets/122620756/33182873-be88-419b-ba42-7740e6832fd3)
+Upon running the application, users will enter the welcome page that will give them the option to sign up or sign into the application.
+![CentDash 6](https://github.com/Warrenn205/CentDash/assets/122620756/3312ebd9-ee08-4b86-9559-1a8d8c6fc7be)
 
 # Sign Up and Sign In
-In order to use CentDash, users must sign up for the application. After signing up the user will be able to sign into CentDash.
-![CentDash Sign Up](https://github.com/Warrenn205/CentDash/assets/122620756/c6c422a1-fedb-4010-bb02-299e5da399a5)
-![CentDash Login](https://github.com/Warrenn205/CentDash/assets/122620756/b4ffe8af-e969-4f81-9112-6d60fbca7e3c)
+To use CentDash, users must sign up for the application. After signing up the user will be able to sign into CentDash.
+![CentDash 8](https://github.com/Warrenn205/CentDash/assets/122620756/04795710-f07d-483f-918a-1781212304bb)
+![CentDash 7](https://github.com/Warrenn205/CentDash/assets/122620756/61acd744-d73d-4899-8729-a902ab9267cb)
 
 # Dashboard
-With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards that allows them to stay updated with their spending and expenses (Sample data shown). 
-![CentDash Dashboard](https://github.com/Warrenn205/CentDash/assets/122620756/dd79a9f7-fc68-41b6-afda-02951e25faeb)
+With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards to stay updated with their spending and expenses. 
+![CentDash 1](https://github.com/Warrenn205/CentDash/assets/122620756/afb3020d-481c-4073-91e6-d12e453b2176)
 
 # Budgets
-Budgets allows users to create budgets and to track their expenses as well. Users can enter the category of their income and expenses and enter the amounts as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
-![CentDash Budgets](https://github.com/Warrenn205/CentDash/assets/122620756/01c9e537-008d-49d6-8f56-11ef60b11431)
+Budgets allow users to create budgets and track their expenses as well. Users can enter the category of their income and expenses and enter the amounts as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
+![CentDash 2](https://github.com/Warrenn205/CentDash/assets/122620756/d455cb47-1c96-412c-ae31-25f85efcdc68)
 
 # Net Worth
 With Net Worth, users can calculate their net worth by adding their assets and liabilities.
-![CentDash Net Worth](https://github.com/Warrenn205/CentDash/assets/122620756/7fbc7771-3513-4907-a17f-3cde8b761bb0)
+![CentDash 3](https://github.com/Warrenn205/CentDash/assets/122620756/4d6771dd-8d4a-4e69-9952-59eb12f748c0)
 
 # Calculator
 Users can calculate their total salary with the Calculator feature.
-![CentDash Calculator](https://github.com/Warrenn205/CentDash/assets/122620756/5977c4a2-e528-4408-b722-070c80854870)
+![CentDash 4](https://github.com/Warrenn205/CentDash/assets/122620756/54835a8a-0721-44c8-8ceb-67019b5bb48f)
 
 # Statements
-CentDash allows users to engage with financial reporting with the interactive Statements feature. With Statements, users can stay up to date with their total and net income and track the type of expenses they have (Sample data shown).
-![CentDash Statements](https://github.com/Warrenn205/CentDash/assets/122620756/628ebf52-dc78-4d6b-97b1-5fe6992920ec)
+CentDash allows users to engage with financial reporting with the interactive Statements feature. With Statements, users can stay up to date with their total and net income and track the type of expenses they have.
+![CentDash 5](https://github.com/Warrenn205/CentDash/assets/122620756/f31635a7-02e2-4850-8805-0ae98a844fa6)
