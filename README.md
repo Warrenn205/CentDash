@@ -38,6 +38,7 @@ With CentDash's interactive dashboard, users can visualize their income and expe
 ![CentDash 1](https://github.com/Warrenn205/CentDash/assets/122620756/afb3020d-481c-4073-91e6-d12e453b2176)
 
 **Chart.js for dashboard implementation**
+
 With Chart.js, I implemented an inituitive and responsive dashboard that updates based on the users input of personal finance data.
 
 ![Charts ](https://github.com/user-attachments/assets/acc74c92-43d5-43a1-a228-ffc1d6889053)
