@@ -20,7 +20,7 @@ To use CentDash, users must sign up for the application. After signing up the us
 
 **Database handling with SQLite**
 
-I created the database for CentDash with SQLite. For the database handling, I used JWTManager to generate a JWT authorization access token for email and password. 
+I created the database for CentDash with SQLite. I used JWTManager to generate a JWT authorization access token for email and password. 
 
 ![JWT](https://github.com/user-attachments/assets/22dd59f7-5fd6-41d2-9364-cc66d0beeac8)
 
@@ -28,7 +28,7 @@ I wrote the SQL Queries for the registration and login credentials. Also, I wrot
 
 ![SQL Query](https://github.com/user-attachments/assets/ac296ce6-4f05-4cc8-8965-06115f36f614)
 
-Here are routes and functions for signing up and signing into CentDash.
+Here are the routes and functions for signing up and signing into CentDash.
 ![Sign up](https://github.com/user-attachments/assets/e558266f-527d-429f-a079-03016a7f283d)
 ![Sign in](https://github.com/user-attachments/assets/ae66f312-0d87-4338-a1f6-23a47c804e9c)
 
@@ -36,6 +36,14 @@ Here are routes and functions for signing up and signing into CentDash.
 # Dashboard
 With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards to stay updated with their spending and expenses. 
 ![CentDash 1](https://github.com/Warrenn205/CentDash/assets/122620756/afb3020d-481c-4073-91e6-d12e453b2176)
+
+**Chart.js for dashboard implementation**
+With Chart.js, I implemented an inituitive and responsive dashboard that updates based on the users input of personal finance data.
+
+![Charts ](https://github.com/user-attachments/assets/acc74c92-43d5-43a1-a228-ffc1d6889053)
+
+![Charts 2](https://github.com/user-attachments/assets/d6b18271-3c86-46aa-ac3b-69d0bb70df42)
+
 
 # Budgets
 Budgets allow users to create budgets and track their expenses as well. Users can enter the category of their income and expenses and enter the amounts as well. With this feature, users can seamlessly keep track of their income, expenses, and net income.
