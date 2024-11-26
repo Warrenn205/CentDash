@@ -19,10 +19,13 @@ To use CentDash, users must sign up for the application. After signing up the us
 ![CentDash 7](https://github.com/Warrenn205/CentDash/assets/122620756/61acd744-d73d-4899-8729-a902ab9267cb)
 
 **Database handling with SQLite**
+
 I created the database for CentDash with SQLite. For the database handling, I used JWTManager to generate a JWT authorization access token for email and password. 
+
 ![JWT](https://github.com/user-attachments/assets/22dd59f7-5fd6-41d2-9364-cc66d0beeac8)
 
 I wrote the SQL Queries for the registration and login credentials. Also, I wrote queries for users' budgets and net worth data that would be recorded in the application.
+
 ![SQL Query](https://github.com/user-attachments/assets/ac296ce6-4f05-4cc8-8965-06115f36f614)
 
 Here are routes and functions for signing up and signing into CentDash.
