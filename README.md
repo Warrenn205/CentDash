@@ -18,6 +18,18 @@ To use CentDash, users must sign up for the application. After signing up the us
 ![CentDash 8](https://github.com/Warrenn205/CentDash/assets/122620756/04795710-f07d-483f-918a-1781212304bb)
 ![CentDash 7](https://github.com/Warrenn205/CentDash/assets/122620756/61acd744-d73d-4899-8729-a902ab9267cb)
 
+**Database handling with SQLite**
+I created the database for CentDash with SQLite. For the database handling, I used JWTManager to generate a JWT authorization access token for email and password. 
+![JWT](https://github.com/user-attachments/assets/22dd59f7-5fd6-41d2-9364-cc66d0beeac8)
+
+I wrote the SQL Queries for the registration and login credentials. Also, I wrote queries for users' budgets and net worth data that would be recorded in the application.
+![SQL Query](https://github.com/user-attachments/assets/ac296ce6-4f05-4cc8-8965-06115f36f614)
+
+Here are routes and functions for signing up and signing into CentDash.
+![Sign up](https://github.com/user-attachments/assets/e558266f-527d-429f-a079-03016a7f283d)
+![Sign in](https://github.com/user-attachments/assets/ae66f312-0d87-4338-a1f6-23a47c804e9c)
+
+
 # Dashboard
 With CentDash's interactive dashboard, users can visualize their income and expense data with bar charts and cards to stay updated with their spending and expenses. 
 ![CentDash 1](https://github.com/Warrenn205/CentDash/assets/122620756/afb3020d-481c-4073-91e6-d12e453b2176)
